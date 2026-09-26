@@ -79,7 +79,7 @@ We synthesize this investigation across five foundational layers: (1) the operat
    - 4.3 In-Band CI/CD Prompt Injection Hazards & Out-of-Band AST Delimiter Fencing
    - 4.4 Tier 1: Out-of-Band Deterministic Gateway (Compilers, AST Matchers, SMT Solvers)
    - 4.5 Tier 2: Multi-Agent Neural Auditing Panel (Maker vs. Checker Orthogonality, Adversarial Stances)
-   - 4.6 Tier 3: Runtime Decoders & Invariant Gates (The Logit Masking Realization Law: Finite Residual Steering vs. External CFG Masks $M(v) \in \{0, -\infty\}$, Schema Validation, Mandatory Counterexample Falsification Engine)
+   - 4.6 Tier 3: Runtime Decoders & Invariant Gates (The Logit Masking Realization Law: Finite Residual Steering vs. External CFG Masks $M(v) \in \lbrace 0, -\infty \rbrace$, Schema Validation, Mandatory Counterexample Falsification Engine)
    - 4.7 Tier 4: Enterprise Adjudication Gate: The Severity-Over-Majority Veto Protocol & Cryptographic Waivers
    - 4.8 The 5-Point Enterprise Invariant Readiness Scorecard & Production Go/No-Go Gate
 5. **Master Consolidated Bibliography & Reputable Literature Grounding**
@@ -220,10 +220,10 @@ In enterprise software engineering, the business impact of software defects is g
 ```mermaid
 graph LR
     subgraph SDLC ["Defect Lifecycle Remediation Cost Escalation"]
-        D1["Phase 1: Design / Prompting<br/><b>Cost: $10 - $100</b><br/>(Immediate Falsification)"]
-        D2["Phase 2: CI/CD Build<br/><b>Cost: $1,000 - $5,000</b><br/>(AST / SMT Linters)"]
-        D3["Phase 3: Integration QA<br/><b>Cost: $10,000 - $50,000</b><br/>(Staging Failures)"]
-        D4["Phase 4: Production Crash<br/><b>Cost: $500,000 - $10,000,000+</b><br/>(Silent Data Corruption, Breaches)"]
+        D1["Phase 1: Design / Prompting<br/><b>Cost: \$10 - \$100</b><br/>(Immediate Falsification)"]
+        D2["Phase 2: CI/CD Build<br/><b>Cost: \$1,000 - \$5,000</b><br/>(AST / SMT Linters)"]
+        D3["Phase 3: Integration QA<br/><b>Cost: \$10,000 - \$50,000</b><br/>(Staging Failures)"]
+        D4["Phase 4: Production Crash<br/><b>Cost: \$500,000 - \$10,000,000+</b><br/>(Silent Data Corruption, Breaches)"]
     end
 
     D1 -->|x10 Cost| D2
@@ -253,13 +253,13 @@ Consider an enterprise development organization deploying AI agents across 100 m
 
 | Metric / Parameter | Nominal Cosplay Agent | Operational 7-Tuple Architecture | Economic Differential |
 | :--- | :--- | :--- | :--- |
-| **Upfront Prompt Engineering Effort** | 10 minutes ($50 labor) | 16 hours ($2,400 labor) | +$2,350 investment |
-| **Inference Token Cost per Run** | ~800 tokens ($0.008) | ~3,500 tokens ($0.035 with CoT) | +$0.027 per evaluation |
-| **Annual Evaluation Compute Cost** | $40 per year | $175 per year | +$135 per year |
+| **Upfront Prompt Engineering Effort** | 10 minutes (\$50 labor) | 16 hours (\$2,400 labor) | +\$2,350 investment |
+| **Inference Token Cost per Run** | ~800 tokens (\$0.008) | ~3,500 tokens (\$0.035 with CoT) | +\$0.027 per evaluation |
+| **Annual Evaluation Compute Cost** | \$40 per year | \$175 per year | +\$135 per year |
 | **Critical Defect Detection Rate ($P_{\text{detect}}$)** | **12.4%** (87.6% escape rate) | **96.8%** (3.2% escape rate) | **+84.4% detection gain** |
 | **Escaped Critical Production Incidents** | ~44 incidents per year | ~1.6 incidents per year | **-42.4 major outages** |
-| **Average Incident Remediation Cost** | $120,000 (triage + customer credit) | $120,000 | Identical severity base |
-| **Annual Incident Blast Radius Expense** | **$5,280,000 / year** | **$192,000 / year** | **$5,088,000 SAVINGS / YEAR** |
+| **Average Incident Remediation Cost** | \$120,000 (triage + customer credit) | \$120,000 | Identical severity base |
+| **Annual Incident Blast Radius Expense** | **\$5,280,000 / year** | **\$192,000 / year** | **\$5,088,000 SAVINGS / YEAR** |
 | **Net Return on Investment (ROI)** | Negative (Net Loss) | **> 2,000% Annual ROI** | **Transformative Enterprise Value** |
 
 ---
@@ -365,7 +365,7 @@ $$S_{t-1} = [P \circ X \circ y_{<t}] = (s_1, s_2, \dots, s_{N_{t-1}})$$
 
 where the total context length is $N_{t-1} = m + n + t - 1$. Crucially, the token $y_t$ has **not yet been sampled**; it is the random variable whose probability distribution over $\mathcal{V}$ is to be computed.
 
-The sequence $S_{t-1}$ is processed across $L$ transformer layers. Let $h_{l, i} \in \mathbb{R}^{d_{\text{model}}}$ denote the hidden activation vector at sequence position $i \in \{1, \dots, N_{t-1}\}$ at layer $l \in \{0, 1, \dots, L\}$. At the input layer ($l = 0$), activations are formed by combining token embeddings and positional encodings:
+The sequence $S_{t-1}$ is processed across $L$ transformer layers. Let $h_{l, i} \in \mathbb{R}^{d_{\text{model}}}$ denote the hidden activation vector at sequence position $i \in \lbrace 1, \dots, N_{t-1} \rbrace$ at layer $l \in \lbrace 0, 1, \dots, L \rbrace$. At the input layer ($l = 0$), activations are formed by combining token embeddings and positional encodings:
 
 $$h_{0, i} = E(s_i) + E_{\text{pos}}(i)$$
 
@@ -384,19 +384,19 @@ $$P(y_t = v \mid S_{t-1}) = \frac{\exp\left(\frac{z_{t, v}}{\tau}\right)}{\sum_{
 The behavior of the persona conditioning manifold is critically bounded by the temperature parameter $\tau$:
 
 1. **Greedy / Argmax Limit ($\tau \to 0^+$)**:
-   Let $z_t^* = \max_{j \in \mathcal{V}} z_{t, j}$ denote the maximal logit value, and let $\mathcal{V}^* = \{v \in \mathcal{V} \mid z_{t, v} = z_t^*\}$ denote the set of tokens achieving this maximum. Dividing both the numerator and denominator by $\exp(z_t^* / \tau)$:
+   Let $z_t^{\ast} = \max_{j \in \mathcal{V}} z_{t, j}$ denote the maximal logit value, and let $\mathcal{V}^{\ast} = \lbrace v \in \mathcal{V} \mid z_{t, v} = z_t^{\ast} \rbrace$ denote the set of tokens achieving this maximum. Dividing both the numerator and denominator by $\exp(z_t^{\ast} / \tau)$:
 
-   $$P(y_t = v \mid S_{t-1}) = \frac{\exp\left(\frac{z_{t, v} - z_t^*}{\tau}\right)}{\sum_{j \in \mathcal{V}} \exp\left(\frac{z_{t, j} - z_t^*}{\tau}\right)}$$
+   $$P(y_t = v \mid S_{t-1}) = \frac{\exp\left(\frac{z_{t, v} - z_t^{\ast}}{\tau}\right)}{\sum_{j \in \mathcal{V}} \exp\left(\frac{z_{t, j} - z_t^{\ast}}{\tau}\right)}$$
 
-   For any non-maximal token $v \notin \mathcal{V}^*$, $z_{t, v} - z_t^* < 0$. As $\tau \to 0^+$, the exponent approaches $-\infty$, yielding:
+   For any non-maximal token $v \notin \mathcal{V}^{\ast}$, $z_{t, v} - z_t^{\ast} < 0$. As $\tau \to 0^+$, the exponent approaches $-\infty$, yielding:
 
-   $$\lim_{\tau \to 0^+} \exp\left(\frac{z_{t, v} - z_t^*}{\tau}\right) = 0, \quad \forall v \notin \mathcal{V}^*$$
+   $$\lim_{\tau \to 0^+} \exp\left(\frac{z_{t, v} - z_t^{\ast}}{\tau}\right) = 0, \quad \forall v \notin \mathcal{V}^{\ast}$$
 
-   For any maximal token $v \in \mathcal{V}^*$, $z_{t, v} - z_t^* = 0$, so $\exp(0) = 1$. The denominator sum becomes $\sum_{j \in \mathcal{V}^*} 1 = |\mathcal{V}^*|$. Hence:
+   For any maximal token $v \in \mathcal{V}^{\ast}$, $z_{t, v} - z_t^{\ast} = 0$, so $\exp(0) = 1$. The denominator sum becomes $\sum_{j \in \mathcal{V}^{\ast}} 1 = |\mathcal{V}^{\ast}|$. Hence:
 
-   $$\lim_{\tau \to 0^+} P(y_t = v \mid S_{t-1}) = \begin{cases} \frac{1}{|\mathcal{V}^*|}, & v \in \mathcal{V}^* \\ 0, & v \notin \mathcal{V}^* \end{cases}$$
+   $$\lim_{\tau \to 0^+} P(y_t = v \mid S_{t-1}) = \begin{cases} \frac{1}{|\mathcal{V}^{\ast}|}, & v \in \mathcal{V}^{\ast} \\ 0, & v \notin \mathcal{V}^{\ast} \end{cases}$$
 
-   Under deterministic canonical tie-breaking (e.g., selecting the lowest vocabulary token index $\min \mathcal{V}^*$), the distribution collapses to a pure Dirac delta measure:
+   Under deterministic canonical tie-breaking (e.g., selecting the lowest vocabulary token index $\min \mathcal{V}^{\ast}$), the distribution collapses to a pure Dirac delta measure:
 
    $$P(y_t = v \mid S_{t-1}) = \mathbb{I}\left(v = \arg\max_{j \in \mathcal{V}} z_{t, j}\right)$$
 
@@ -417,13 +417,13 @@ The behavior of the persona conditioning manifold is critically bounded by the t
 
 #### 2.2 Key-Value Cache Mechanics and Causal Query Derivation
 
-During the prefill phase, the tokens of the persona prefix $P = (s_1, \dots, s_m)$ are processed by the transformer and stored in the Key-Value (KV) cache. For every layer $l \in \{1, \dots, L\}$ and attention head $k \in \{1, \dots, H\}$, the Key and Value representations are linear projections of the **previous layer's hidden activations**:
+During the prefill phase, the tokens of the persona prefix $P = (s_1, \dots, s_m)$ are processed by the transformer and stored in the Key-Value (KV) cache. For every layer $l \in \lbrace 1, \dots, L \rbrace$ and attention head $k \in \lbrace 1, \dots, H \rbrace$, the Key and Value representations are linear projections of the **previous layer's hidden activations**:
 
-$$K_{l, k, i}^{(P)} = h_{l-1, i} W_{K, l, k} \in \mathbb{R}^{1 \times d_k}, \quad V_{l, k, i}^{(P)} = h_{l-1, i} W_{V, l, k} \in \mathbb{R}^{1 \times d_k}, \quad \forall i \in \{1, \dots, m\}$$
+$$K_{l, k, i}^{(P)} = h_{l-1, i} W_{K, l, k} \in \mathbb{R}^{1 \times d_k}, \quad V_{l, k, i}^{(P)} = h_{l-1, i} W_{V, l, k} \in \mathbb{R}^{1 \times d_k}, \quad \forall i \in \lbrace 1, \dots, m \rbrace$$
 
 where $W_{K, l, k}, W_{V, l, k} \in \mathbb{R}^{d_{\text{model}} \times d_k}$ and $d_k = d_{\text{model}} / H$.
 
-Similarly, the target context tokens $X$ are projected and cached for indices $i \in \{m+1, \dots, m+n\}$, and prior generated tokens $y_{<t}$ are cached for indices $i \in \{m+n+1, \dots, m+n+t-1\}$.
+Similarly, the target context tokens $X$ are projected and cached for indices $i \in \lbrace m+1, \dots, m+n \rbrace$, and prior generated tokens $y_{<t}$ are cached for indices $i \in \lbrace m+n+1, \dots, m+n+t-1 \rbrace$.
 
 ##### Causal Derivation of the Query Vector (Eliminating Acausal Dependencies)
 
@@ -437,7 +437,7 @@ where $W_{Q, l, k} \in \mathbb{R}^{d_{\text{model}} \times d_k}$.
 
 The scaled dot-product attention score vector $\alpha_{l, k}^{(t)} \in \mathbb{R}^{N_{t-1}}$ measures the affinity between the terminal context state $Q_{l, k}^{(t)}$ and all historical key vectors:
 
-$$\alpha_{l, k, i}^{(t)} = \frac{\exp\left( \frac{Q_{l, k}^{(t)} (K_{l, k, i})^T}{\sqrt{d_k}} \right)}{\sum_{j=1}^{N_{t-1}} \exp\left( \frac{Q_{l, k}^{(t)} (K_{l, k, j})^T}{\sqrt{d_k}} \right)}, \quad \forall i \in \{1, \dots, N_{t-1}\}$$
+$$\alpha_{l, k, i}^{(t)} = \frac{\exp\left( \frac{Q_{l, k}^{(t)} (K_{l, k, i})^T}{\sqrt{d_k}} \right)}{\sum_{j=1}^{N_{t-1}} \exp\left( \frac{Q_{l, k}^{(t)} (K_{l, k, j})^T}{\sqrt{d_k}} \right)}, \quad \forall i \in \lbrace 1, \dots, N_{t-1} \rbrace$$
 
 The attention head output $A_{l, k}^{(t)} \in \mathbb{R}^{1 \times d_k}$ aggregates the historical value vectors:
 
@@ -592,12 +592,12 @@ $$\mathcal{K} = \mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}$$
 | :--- | :--- |
 | • Executed by external tooling | • Evaluated by LLM reasoning |
 | • Compilers, SMT (Z3), AST-grep | • Semantic contracts, intent sanity |
-| • Mathematically sound: $K_i(A) \in \{0,1\}$ | • Generates candidate falsifications |
+| • Mathematically sound: $K_i(A) \in \lbrace 0, 1 \rbrace$ | • Generates candidate falsifications |
 | • Non-probabilistic truth ground | • MUST be verified by counterexample |
 
 1. **Deterministic Tool Invariants ($\mathcal{K}_{\text{det}}$)**:
    Properties verified deterministically by invoking external tools in $\mathcal{T}$:
-   $$K_i^{\text{det}}(A) \in \{0, 1\}$$
+   $$K_i^{\text{det}}(A) \in \lbrace 0, 1 \rbrace$$
    - $K_{\text{ast}}$: Syntactic tree conformity verified via AST parsers (e.g., `ast_grep`).
    - $K_{\text{smt}}$: Satisfiability and boundary invariants proven by formal solvers (e.g., Z3).
    - $K_{\text{type}}$: Static type-safety proven by compilers/typecheckers (`mypy --strict`, `clang++ -Wall`).
@@ -614,10 +614,10 @@ $$\mathcal{K} = \mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}$$
 
 Heuristic Attack Vectors constitute a domain-specific checklist of stress tests, edge conditions, and pathological inputs designed to break the artifact:
 
-$$\mathcal{H}_{\text{domain}} = \{h_1, h_2, \dots, h_m\}$$
+$$\mathcal{H}_{\text{domain}} = \lbrace h_1, h_2, \dots, h_m \rbrace$$
 
 Unlike generic requests to "find bugs," an operational persona is equipped with an explicit attack matrix:
-- **Numerical Boundaries**: $\{0, -1, 2^{31}-1, 2^{63}-1, \text{NaN}, +\infty, -\infty, \epsilon\}$.
+- **Numerical Boundaries**: $\lbrace 0, -1, 2^{31}-1, 2^{63}-1, \text{NaN}, +\infty, -\infty, \epsilon \rbrace$.
 - **Temporal & Concurrency Hazards**: Context switches between check and use (TOCTOU), lock inversion, thread starvation, clock drift, out-of-order message delivery.
 - **Structural Extremes**: Empty collections, single-element collections, deeply nested structures exceeding recursion depth, payloads exceeding maximum transmission units (MTU).
 - **Adversarial Inputs**: Malformed UTF-8 byte sequences, SQL/command injection payloads, prototype pollution, decompression bombs.
@@ -626,18 +626,18 @@ Unlike generic requests to "find bugs," an operational persona is equipped with 
 
 The Permitted Tool Matrix implements the **Principle of Least Privilege** across multi-agent ensembles:
 
-$$\mathcal{T} \subseteq \text{Tools} = \{\text{read\_file}, \text{write\_file}, \text{exec\_bash}, \text{ast\_grep}, \text{smt\_solver}, \text{http\_request}\}$$
+$$\mathcal{T} \subseteq \text{Tools} = \lbrace \text{read\_file}, \text{write\_file}, \text{exec\_bash}, \text{ast\_grep}, \text{smt\_solver}, \text{http\_request} \rbrace$$
 
 An operational persona is physically restricted to the subset of tools required for its mandate:
-- An **Adversarial Auditor** must possess read-only and analytical permissions: $\mathcal{T}_{\text{audit}} \subseteq \{\text{read\_file}, \text{ast\_grep}, \text{smt\_solver}\}$. Under no circumstances should an auditor possess `write_file` or runtime modification access, preventing it from silently "fixing" code rather than reporting fatal defects.
-- A **Maker / Synthesizer** possesses creation access: $\mathcal{T}_{\text{maker}} \subseteq \{\text{read\_file}, \text{write\_file}, \text{ast\_edit}\}$.
+- An **Adversarial Auditor** must possess read-only and analytical permissions: $\mathcal{T}_{\text{audit}} \subseteq \lbrace \text{read\_file}, \text{ast\_grep}, \text{smt\_solver} \rbrace$. Under no circumstances should an auditor possess `write_file` or runtime modification access, preventing it from silently "fixing" code rather than reporting fatal defects.
+- A **Maker / Synthesizer** possesses creation access: $\mathcal{T}_{\text{maker}} \subseteq \lbrace \text{read\_file}, \text{write\_file}, \text{ast\_edit} \rbrace$.
 - Tool invocations are verified by the execution harness. Any attempt to invoke $t \notin \mathcal{T}$ raises a security exception, terminating the agent.
 
 #### 3.6 Element 6: Output Rigor Schema ($\mathcal{R}$)
 
 To eradicate conversational preamble, hedging ("I hope this helps!"), and narrative ambiguity, an operational persona is bound to a machine-verifiable Output Rigor Schema $\mathcal{R}_{\text{JSON}}$ defined as a formal boolean validation predicate:
 
-$$\mathcal{R}_{\text{valid}}: \text{String} \to \{0, 1\}$$
+$$\mathcal{R}_{\text{valid}}: \text{String} \to \lbrace 0, 1 \rbrace$$
 
 where $\mathcal{R}_{\text{valid}}(Y) = 1$ if and only if $Y$ parses as valid JSON conforming strictly to schema $\mathcal{R}_{\text{JSON}}$. Any completion $Y$ where $\mathcal{R}_{\text{valid}}(Y) = 0$ is rejected at the engine level.
 
@@ -709,7 +709,7 @@ where $\mathcal{R}_{\text{valid}}(Y) = 1$ if and only if $Y$ parses as valid JSO
 
 The Defect Scoring Bounds element defines an immutable mapping from identified flaws to severity tiers:
 
-$$\mathcal{S}: \text{Defect} \to \{\text{Sev-1}, \text{Sev-2}, \text{Sev-3}\}$$
+$$\mathcal{S}: \text{Defect} \to \lbrace \text{Sev-1}, \text{Sev-2}, \text{Sev-3} \rbrace$$
 
 - **Sev-1 (Critical / Catastrophic)**: Invariant violation, data loss risk, remote code execution, unhandled concurrency race condition, or unstated architectural input gap. **Mandates immediate, unconditional veto.**
 - **Sev-2 (Major / Degraded)**: Suboptimal complexity class ($O(N^2)$ where $O(N)$ is achievable), unindexed database query, absence of backpressure handling. **Mandates veto unless an explicit, auditable operational waiver is granted.**
@@ -808,7 +808,7 @@ To eliminate sycophancy, systems engineers must clearly distinguish between **In
 2. **External Deterministic Logit Masking and Grammar Decoding**:
    To achieve 100% deterministic elimination of sycophantic tokens and guarantee schema conformity, operational systems deploy an **External Runtime Logit Processor** (e.g., vLLM `LogitsProcessor`, Outlines CFG engine, or SGLang grammar decoder).
    
-   The inference engine intercepts the raw logit vector $z_t$ emitted by $W_U h_L^{(m+n+t-1)}$ before the softmax layer is evaluated. It applies a hard logit mask $M_t \in \{0, \infty\}^{|\mathcal{V}|}$:
+   The inference engine intercepts the raw logit vector $z_t$ emitted by $W_U h_L^{(m+n+t-1)}$ before the softmax layer is evaluated. It applies a hard logit mask $M_t \in \lbrace 0, \infty \rbrace^{|\mathcal{V}|}$:
 
    $$\tilde{z}_{t, v} = z_{t, v} - M_t(v), \quad \text{where } M_t(v) = \begin{cases} \infty, & v \in \mathcal{V}_{\text{prohibited}}(y_{<t}) \\ 0, & v \in \mathcal{V}_{\text{allowed}}(y_{<t}) \end{cases}$$
 
@@ -924,7 +924,7 @@ $$\mathcal{P}_{\text{SecurityAudit}} = \langle \mathcal{I}, \mathcal{E}, \mathca
 - **Epistemic Stance ($\mathcal{E}_{\text{hostile}}$)**: Hostile Skepticism. The code is assumed to contain denial-of-service vulnerabilities and state desynchronization bugs. Burden of proof requires constructing concrete input exploit payloads.
 - **Mandatory Invariants ($\mathcal{K}$)**:
   - $\mathcal{K}_{\text{det}}$:
-    - $K_1^{\text{det}}$ (`ast_grep`): `pattern: "SECRET_KEY = '$SECRET'"` $\implies 0$ hardcoded secrets.
+    - $K_1^{\text{det}}$ (`ast_grep`): `pattern: "SECRET_KEY = '<SECRET_KEY>'"` $\implies 0$ hardcoded secrets.
     - $K_2^{\text{det}}$ (`ast_grep`): Cache mutations must occur within a synchronized `with lock:` block.
   - $\mathcal{K}_{\text{neural}}$:
     - $\widehat{K}_3$: Cache structures must possess an explicit maximum size bound and eviction strategy (LRU/TTL).
@@ -1222,7 +1222,7 @@ flowchart TD
 ### Core Mathematical & System Invariants Established
 1. **Persona Non-Equivalence Law**: $\mathcal{P}_{\text{cosplay}} \not\equiv \mathcal{P}_{\text{operational}}$. Stylistic roleplay affects surface token frequencies without modifying reasoning subspace bounds.
 2. **Causal Derivation Law**: At generation step $t$, the Query vector must be derived strictly from the preceding context activation: $Q_{l, k}^{(t)} = h_{l-1}^{(m+n+t-1)} W_{Q, l, k}$. Calculating $Q$ from an unsampled token $y_t$ introduces an acausal circularity.
-3. **Dual-Tier Invariant Law**: Invariant verification must decouple deterministic external tooling ($K^{\text{det}} \in \{0, 1\}$ via compilers, AST, SMT) from probabilistic neural auditing ($\widehat{K} \in [0, 1]$). Probabilistic neural assertions cannot masquerade as formal proofs.
+3. **Dual-Tier Invariant Law**: Invariant verification must decouple deterministic external tooling ($K^{\text{det}} \in \lbrace 0, 1 \rbrace$ via compilers, AST, SMT) from probabilistic neural auditing ($\widehat{K} \in [0, 1]$). Probabilistic neural assertions cannot masquerade as formal proofs.
 4. **Logit Masking Realization Law**: In-context tokens guide attention soft-probabilistically. Setting token probabilities strictly to zero ($M(v) = \infty$) requires an external runtime inference engine logit processor or CFG grammar decoder.
 5. **Severity Veto Law**: In all multi-agent consensus evaluations, a single verified Sev-1 defect triggers an unconditional veto, overriding any $N$-agent majority vote, provided it is substantiated by an executable falsification proof.
 6. **Two-Plane Isolation Law**: Persona control contracts and untrusted target artifacts must reside in distinct structural envelopes. Instructions inside the data plane must never execute as control-plane directives.
@@ -1323,15 +1323,15 @@ While byte-fallback prevents hard execution crashes, it introduces severe system
 To safeguard persona integrity against token dilation, production systems must enforce strict Unicode normalization (NFKC) and strip zero-width codepoints and unassigned Unicode categories at the ingress sanitization boundary before tokenization.
 
 #### 2.3 Mathematical Formalization of Subword Token Segmentation
-Let an input sequence of text characters representing a persona specification be denoted as $S \in \Sigma^*$, where $\Sigma$ is the set of all Unicode characters. The tokenizer is a deterministic mapping function:
+Let an input sequence of text characters representing a persona specification be denoted as $S \in \Sigma^{\ast}$, where $\Sigma$ is the set of all Unicode characters. The tokenizer is a deterministic mapping function:
 
-$$\tau: \Sigma^* \to \mathcal{V}^*$$
+$$\tau: \Sigma^{\ast} \to \mathcal{V}^{\ast}$$
 
 which transforms the string $S$ into an ordered sequence of $k$ token identifiers:
 
-$$\mathbf{t} = (t_0, t_1, t_2, \dots, t_k), \quad t_i \in \{0, 1, 2, \dots, |\mathcal{V}| - 1\}$$
+$$\mathbf{t} = (t_0, t_1, t_2, \dots, t_k), \quad t_i \in \lbrace 0, 1, 2, \dots, |\mathcal{V}| - 1 \rbrace$$
 
-where $|\mathcal{V}|$ represents the total vocabulary cardinality. Each discrete token identifier $t_i$ can be represented algebraically as a standard basis vector (one-hot vector) $\mathbf{e}_{t_i} \in \{0, 1\}^{|\mathcal{V}|}$:
+where $|\mathcal{V}|$ represents the total vocabulary cardinality. Each discrete token identifier $t_i$ can be represented algebraically as a standard basis vector (one-hot vector) $\mathbf{e}_{t_i} \in \lbrace 0, 1 \rbrace^{|\mathcal{V}|}$:
 
 $$\mathbf{e}_{t_i} = [0, \dots, 0, \underbrace{1}_{t_i\text{-th position}}, 0, \dots, 0]^T$$
 
@@ -1481,7 +1481,7 @@ When these specialized tokens are processed across early attention layers, their
 ### 4. Positional Encodings, RoPE, and Long-Range Mechanics
 
 #### 4.1 Permutation Invariance and Positional Signaling
-The core self-attention operator in transformers is mathematically permutation-invariant. Given a sequence of input representations $\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N]^T \in \mathbb{R}^{N \times d_{\text{model}}}$ and any permutation matrix $\mathbf{P} \in \{0, 1\}^{N \times N}$:
+The core self-attention operator in transformers is mathematically permutation-invariant. Given a sequence of input representations $\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N]^T \in \mathbb{R}^{N \times d_{\text{model}}}$ and any permutation matrix $\mathbf{P} \in \lbrace 0, 1 \rbrace^{N \times N}$:
 
 $$\text{Attention}(\mathbf{P}\mathbf{X} W_Q, \mathbf{P}\mathbf{X} W_K, \mathbf{P}\mathbf{X} W_V) = \mathbf{P} \cdot \text{Attention}(\mathbf{X} W_Q, \mathbf{X} W_K, \mathbf{X} W_V)$$
 
@@ -1529,14 +1529,14 @@ $$\tilde{\mathbf{q}}_m = \mathbf{R}_{\Theta, m}^{d_k} \mathbf{q}_m, \quad \tilde
 To prove that the scalar attention score preserves relative positional distance, consider each 2D complex subspace $j$. The Query and Key are represented as complex scalars $q^{(j)}, k^{(j)} \in \mathbb{C}$. The complex Hermitian inner product is:
 
 $$\begin{aligned}
-\langle \tilde{q}^{(j)}_m, \tilde{k}^{(j)}_n \rangle_{\mathbb{C}} &= \left( q^{(j)} e^{i m \theta_j} \right) \left( k^{(j)} e^{i n \theta_j} \right)^* \\
-&= q^{(j)} e^{i m \theta_j} \left(k^{(j)}\right)^* e^{-i n \theta_j} \\
-&= q^{(j)} \left(k^{(j)}\right)^* e^{i(m - n)\theta_j}
+\langle \tilde{q}^{(j)}_m, \tilde{k}^{(j)}_n \rangle_{\mathbb{C}} &= \left( q^{(j)} e^{i m \theta_j} \right) \left( k^{(j)} e^{i n \theta_j} \right)^{\ast} \\
+&= q^{(j)} e^{i m \theta_j} \left(k^{(j)}\right)^{\ast} e^{-i n \theta_j} \\
+&= q^{(j)} \left(k^{(j)}\right)^{\ast} e^{i(m - n)\theta_j}
 \end{aligned}$$
 
-where $(\cdot)^*$ denotes the complex conjugate. The real scalar inner product is the real part of the complex Hermitian inner product:
+where $(\cdot)^{\ast}$ denotes the complex conjugate. The real scalar inner product is the real part of the complex Hermitian inner product:
 
-$$\langle \tilde{\mathbf{q}}_m^{(j)}, \tilde{\mathbf{k}}_n^{(j)} \rangle_{\mathbb{R}} = \text{Re}\left[ \langle \tilde{q}^{(j)}_m, \tilde{k}^{(j)}_n \rangle_{\mathbb{C}} \right] = \text{Re}\left[ q^{(j)} \left(k^{(j)}\right)^* e^{i(m - n)\theta_j} \right]$$
+$$\langle \tilde{\mathbf{q}}_m^{(j)}, \tilde{\mathbf{k}}_n^{(j)} \rangle_{\mathbb{R}} = \text{Re}\left[ \langle \tilde{q}^{(j)}_m, \tilde{k}^{(j)}_n \rangle_{\mathbb{C}} \right] = \text{Re}\left[ q^{(j)} \left(k^{(j)}\right)^{\ast} e^{i(m - n)\theta_j} \right]$$
 
 In real matrix notation, using the orthogonality of Givens rotation matrices:
 
@@ -2023,7 +2023,7 @@ Persona conditioning succeeds or fails entirely on whether its prefix tokens est
 #### 2.1 Mathematical Formulation of Q, K, V Projections Across Layers and Heads
 To formalize how a persona influences token generation, consider a decoder-only autoregressive transformer consisting of $L$ layers, each containing $H$ attention heads. Let the model dimension be denoted as $d_{\text{model}}$, and let the dimension of each individual attention head be $d_k = d_v = d_{\text{head}} = d_{\text{model}} / H$.
 
-Let the full sequence at inference time be indexed by $j \in \{0, 1, \dots, T-1\}$, where the total sequence length $T$ is structured into three distinct contiguous segments:
+Let the full sequence at inference time be indexed by $j \in \lbrace 0, 1, \dots, T-1 \rbrace$, where the total sequence length $T$ is structured into three distinct contiguous segments:
 1. **System & Persona Prefix Segment**: Positions $j \in [0, m-1]$, containing attention sinks ($j \in [0, 3]$) followed by the operational persona invariants ($j \in [4, m-1]$).
 2. **Context & Dialogue Segment**: Positions $j \in [m, m+n-1]$, containing user instructions, domain documentation, and external tool outputs.
 3. **Autoregressive Generation Segment**: Positions $j \in [m+n, m+n+t-1]$, containing the $t$ newly generated output tokens.
@@ -2034,7 +2034,7 @@ $$\mathbf{x}_{l-1}^{(j)} = \text{RMSNorm}\left(\mathbf{h}_{l-1}^{(j)}\right) = \
 
 where $\boldsymbol{\gamma}_l \in \mathbb{R}^{d_{\text{model}}}$ is a learnable affine gain parameter and $\epsilon$ is a numerical stabilization constant (typically $10^{-6}$).
 
-For each layer $l \in \{1, \dots, L\}$ and each head $h \in \{1, \dots, H\}$, the model applies learned linear projection matrices $W_Q^{(l, h)}, W_K^{(l, h)}, W_V^{(l, h)} \in \mathbb{R}^{d_k \times d_{\text{model}}}$ to generate Query, Key, and Value vectors:
+For each layer $l \in \lbrace 1, \dots, L \rbrace$ and each head $h \in \lbrace 1, \dots, H \rbrace$, the model applies learned linear projection matrices $W_Q^{(l, h)}, W_K^{(l, h)}, W_V^{(l, h)} \in \mathbb{R}^{d_k \times d_{\text{model}}}$ to generate Query, Key, and Value vectors:
 
 $$\mathbf{q}_j^{(l, h)} = W_Q^{(l, h)} \mathbf{x}_{l-1}^{(j)} \in \mathbb{R}^{d_k}$$
 
@@ -2055,7 +2055,7 @@ The Query vector for the current token being generated is derived strictly from 
 
 $$\tilde{\mathbf{q}}_\kappa^{(l, h)} = R_{\Theta, \kappa}^{(d_k)} \left( W_Q^{(l, h)} \text{RMSNorm}\left(\mathbf{h}_{l-1}^{(\kappa)}\right) \right)$$
 
-Because the model is causal (autoregressive), token $\kappa$ can attend to all preceding positions $j \le \kappa$, but no future positions ($j > \kappa$). In high-performance inference engines (such as vLLM or TensorRT-LLM), the Keys and Values for all historical positions $j \in \{0, \dots, \kappa\}$ are precomputed and cached in high-bandwidth GPU memory (HBM) as the **KV-cache**:
+Because the model is causal (autoregressive), token $\kappa$ can attend to all preceding positions $j \le \kappa$, but no future positions ($j > \kappa$). In high-performance inference engines (such as vLLM or TensorRT-LLM), the Keys and Values for all historical positions $j \in \lbrace 0, \dots, \kappa \rbrace$ are precomputed and cached in high-bandwidth GPU memory (HBM) as the **KV-cache**:
 
 $$\mathbb{K}^{(l, h)} = \left[ \tilde{\mathbf{k}}_0^{(l, h)}, \tilde{\mathbf{k}}_1^{(l, h)}, \dots, \tilde{\mathbf{k}}_\kappa^{(l, h)} \right] \in \mathbb{R}^{d_k \times (\kappa + 1)}$$
 
@@ -2069,7 +2069,7 @@ Note that the rotary matrix product simplifies to a relative positional displace
 
 The attention weights across the causal sequence are normalized via the softmax operator:
 
-$$A_{\kappa, j}^{(l, h)} = \frac{\exp\left(\alpha_{\kappa, j}^{(l, h)}\right)}{\sum_{j'=0}^{\kappa} \exp\left(\alpha_{\kappa, j'}^{(l, h)}\right)}, \quad \forall j \in \{0, \dots, \kappa\}$$
+$$A_{\kappa, j}^{(l, h)} = \frac{\exp\left(\alpha_{\kappa, j}^{(l, h)}\right)}{\sum_{j'=0}^{\kappa} \exp\left(\alpha_{\kappa, j'}^{(l, h)}\right)}, \quad \forall j \in \lbrace 0, \dots, \kappa \rbrace$$
 
 This formulation guarantees strict causal probability conservation:
 
@@ -2312,13 +2312,13 @@ The most widely adopted technique for extracting and applying behavioral directi
 ```
 
 ##### Mathematical Derivation of Persona Steering Vectors via Column Stacking SVD
-Let $\mathcal{D}_+ = \{x_+^{(1)}, \dots, x_+^{(N)}\}$ be a dataset of prompts paired with behavioral completions exemplifying an operational stance (e.g., rigorous, non-sycophantic, invariant-driven verification). Let $\mathcal{D}_- = \{x_-^{(1)}, \dots, x_-^{(N)}\}$ be an identical set of prompts paired with completions exemplifying the failure mode (e.g., sycophantic, careless flattery).
+Let $\mathcal{D}_+ = \lbrace x_+^{(1)}, \dots, x_+^{(N)} \rbrace$ be a dataset of prompts paired with behavioral completions exemplifying an operational stance (e.g., rigorous, non-sycophantic, invariant-driven verification). Let $\mathcal{D}_- = \lbrace x_-^{(1)}, \dots, x_-^{(N)} \rbrace$ be an identical set of prompts paired with completions exemplifying the failure mode (e.g., sycophantic, careless flattery).
 
-For a chosen intermediate layer $l \in \{1, \dots, L\}$, we pass both datasets through the frozen transformer and record the residual stream activations at the final prompt token:
+For a chosen intermediate layer $l \in \lbrace 1, \dots, L \rbrace$, we pass both datasets through the frozen transformer and record the residual stream activations at the final prompt token:
 
 $$\mathbf{h}_l\left(x_+^{(i)}\right), \quad \mathbf{h}_l\left(x_-^{(i)}\right) \in \mathbb{R}^{d_{\text{model}}}$$
 
-Define the individual contrastive activation difference vectors for each prompt pair $i \in \{1, \dots, N\}$ as:
+Define the individual contrastive activation difference vectors for each prompt pair $i \in \lbrace 1, \dots, N \rbrace$ as:
 
 $$\boldsymbol{\delta}^{(i)} = \mathbf{h}_l\left(x_+^{(i)}\right) - \mathbf{h}_l\left(x_-^{(i)}\right) \in \mathbb{R}^{d_{\text{model}}}$$
 
@@ -2815,7 +2815,7 @@ $$\mathbf{h}_t = \mathbf{h}_t^{(0)} + \Delta \mathbf{h}_{\text{nominal}}$$
 
 This drift shifts the unembedding projection logits $z_{t, v} = W_U(v) \cdot \mathbf{h}_t$ in favor of stylistic tokens $V_{\text{style}} \subset \mathcal{V}$ (e.g., `"Certainly"`, `"Comprehensive"`, `"Robust"`, `"Architectural"`). However, the projection provides **zero negative logit pressure** against affirmative or sycophantic tokens:
 
-$$z_{t, v_{\text{agree}}} \gg z_{t, v_{\text{veto}}}, \quad \forall v_{\text{agree}} \in \{\text{"Looks"}, \text{"Great"}, \text{"Valid"}, \text{"Approved"}\}$$
+$$z_{t, v_{\text{agree}}} \gg z_{t, v_{\text{veto}}}, \quad \forall v_{\text{agree}} \in \lbrace \text{"Looks"}, \text{"Great"}, \text{"Valid"}, \text{"Approved"} \rbrace$$
 
 Because the pre-training and RLHF corpora heavily penalize unprovoked refusal and aggressively reward agreeable, helpful completions, the model defaults to the highest-probability path: validating the user's design while wrapping the approval in architectural terminology.
 
@@ -2835,7 +2835,7 @@ where the prompt establishes a subspace projection operator $\Pi_{\mathcal{I}}$,
 | **Verification Basis** | Plausibility matching; surface similarity to pre-training text | Deterministic invariant checks ($\mathcal{K}$); execution against negative boundary checklists ($\mathcal{H}$) |
 | **RLHF Alignment Interaction** | Sycophancy-dominated; optimizes for politeness and conversational approval | Sycophancy-suppressed; negative constraints induce finite negative logit shifts ($\Delta z \ll 0$) on affirmative tokens |
 | **Tool Integration ($\mathcal{T}$)** | Unconstrained or unguided; speculative internal hallucination | Principle of Least Privilege; out-of-band deterministic verification tools (AST parsers, SAT solvers) |
-| **Output Enforcement ($\mathcal{R}$)** | Unstructured natural language; conversational prose and filler | Strongly typed schema ($\mathcal{R}_{\text{valid}}: Y \to \{0, 1\}$); structured AST / JSON enforced via runtime CFG |
+| **Output Enforcement ($\mathcal{R}$)** | Unstructured natural language; conversational prose and filler | Strongly typed schema ($\mathcal{R}_{\text{valid}}: Y \to \lbrace 0, 1 \rbrace$); structured AST / JSON enforced via runtime CFG |
 | **Governance & Veto ($\mathcal{S}$)** | Democratic consensus; easily outvoted in multi-agent committees | Severity-Over-Majority rule; single verified SEV-1 failure issues an absolute VETO |
 | **Primary Failure Mode** | **Rubber-Stamp Syndrome**: Eloquently compliments catastrophic design bugs | Rejection on minor non-invariants if boundary conditions are overly strict |
 
@@ -2879,7 +2879,7 @@ Similarly, the token `"Lawyer"` spans statutory criminal defense, courtroom dram
 Because the token embedding $\mathbf{x}_{\text{nominal}} = W_E(t_{\text{nominal}})$ must serve as the shared key for all these disparate associations across the transformer's attention heads, its initial position in $\mathbb{R}^{d_{\text{model}}}$ has **exceptionally high semantic entropy**. It is an uncoordinated superposition of thousands of conflicting pre-training contexts.
 
 #### 2.2 Polysemy, Semantic Entropy, and Diffuse Pre-training Representations
-We can quantify the semantic dispersion of a nominal persona prompt using information theory. Let $\mathcal{C}$ represent the pre-training corpus distribution, partitioned into domain sub-corpora $\{c_1, c_2, \dots, c_K\}$, where each $c_k$ represents a specific textual genre (e.g., $c_{\text{formal\_specs}}$, $c_{\text{fiction}}$, $c_{\text{marketing}}$, $c_{\text{social}}$).
+We can quantify the semantic dispersion of a nominal persona prompt using information theory. Let $\mathcal{C}$ represent the pre-training corpus distribution, partitioned into domain sub-corpora $\lbrace c_1, c_2, \dots, c_K \rbrace$, where each $c_k$ represents a specific textual genre (e.g., $c_{\text{formal\_specs}}$, $c_{\text{fiction}}$, $c_{\text{marketing}}$, $c_{\text{social}}$).
 
 The conditional probability distribution of contexts given a nominal persona token $t_{\text{nominal}}$ exhibits high Shannon entropy:
 
@@ -3000,7 +3000,7 @@ $$\mathbf{h}_L^{(N)} = \mathbf{h}_{\text{base}} + \Delta \mathbf{h}_{\text{perso
 
 where $\mathbf{w}_{\text{RLHF}} \in \mathbb{R}^{d_{\text{model}}}$ is the directional steering vector imprinted during alignment that pushes tokens toward conversational affirmation and politeness.
 
-Let $v_{\text{affirm}} \in \{\text{"Certainly"}, \text{"Great"}, \text{"This"}, \text{"Overall"}, \text{"Yes"}\}$ and $v_{\text{reject}} \in \{\text{"REJECTED"}, \text{"FATAL"}, \text{"VETO"}, \text{"INCORRECT"}\}$.
+Let $v_{\text{affirm}} \in \lbrace \text{"Certainly"}, \text{"Great"}, \text{"This"}, \text{"Overall"}, \text{"Yes"} \rbrace$ and $v_{\text{reject}} \in \lbrace \text{"REJECTED"}, \text{"FATAL"}, \text{"VETO"}, \text{"INCORRECT"} \rbrace$.
 
 Under a **nominal persona prompt** $P_{\text{nominal}} = \text{"You are an expert Architect"}$:
 1. The perturbation $\Delta \mathbf{h}_{\text{nominal}}$ has a positive projection along domain vocabulary features, but has an **orthogonal or positive projection** along politeness and professional courtesy features.
@@ -3115,7 +3115,7 @@ Because $\|\mathbf{h}_{t, L}\| < \infty$ and $\|W_U(v)\| < \infty$, the resultin
 
 $$P(y_t = v \mid y_{<t}, X) = \frac{\exp(z_{t, v})}{\sum_{u \in \mathcal{V}} \exp(z_{t, u})} > 0, \quad \forall v \in \mathcal{V}$$
 
-When an operational persona incorporates hard negative constraints ($\mathcal{K}$), self-attention heads project destructive interference onto the unembedding directions of affirmative tokens $v_{\text{affirm}} \in \{\text{"LGTM"}, \text{"Approved"}, \text{"Valid"}\}$, inducing a substantial finite negative offset:
+When an operational persona incorporates hard negative constraints ($\mathcal{K}$), self-attention heads project destructive interference onto the unembedding directions of affirmative tokens $v_{\text{affirm}} \in \lbrace \text{"LGTM"}, \text{"Approved"}, \text{"Valid"} \rbrace$, inducing a substantial finite negative offset:
 
 $$z_{t, v_{\text{affirm}}} = z_{t, v_{\text{affirm}}}^{(0)} + \Delta z_{v_{\text{affirm}}}, \quad \text{where } \Delta z_{v_{\text{affirm}}} \ll 0$$
 
@@ -3692,9 +3692,9 @@ Across LLM-driven software architecture and systems engineering, input gaps mani
 | **5. Implicit Domain Assumptions** | Hidden business logic invariants, unstated regulatory constraints, or unverified temporal ordering rules. | An e-commerce settlement engine assumes that authorization and capture always execute within the same billing epoch. | Violation of PCI-DSS / SOX compliance rules; regulatory fines; unreconciled ledger discrepancies. |
 
 #### 2.2 Mathematical Formulation of Latent Context and Input Gaps
-To formalize how input gaps propagate through autoregressive inference, let the total information space required to produce a mathematically sound, defect-free engineering artifact be denoted as the closed tuple $\mathcal{X}^*$:
+To formalize how input gaps propagate through autoregressive inference, let the total information space required to produce a mathematically sound, defect-free engineering artifact be denoted as the closed tuple $\mathcal{X}^{\ast}$:
 
-$$\mathcal{X}^* = \langle X_{\text{obs}}, X_{\text{latent}} \rangle$$
+$$\mathcal{X}^{\ast} = \langle X_{\text{obs}}, X_{\text{latent}} \rangle$$
 
 Where:
 - $X_{\text{obs}} = (x_1, x_2, \dots, x_n)$ represents the explicit, observed prompt tokens provided by the user.
@@ -3702,7 +3702,7 @@ Where:
 
 In an ideal, formally verified engineering pipeline, an agent evaluates the joint specification. When $X_{\text{latent}} \neq \emptyset$, the valid engineering response is not to guess $X_{\text{latent}}$, but to compute the missing set:
 
-$$\Delta_{\text{gaps}} = \mathcal{X}^* \setminus X_{\text{obs}}$$
+$$\Delta_{\text{gaps}} = \mathcal{X}^{\ast} \setminus X_{\text{obs}}$$
 
 And emit an input demand function:
 
@@ -4140,7 +4140,7 @@ In reality, the code is an **architectural catastrophe** that will destroy finan
 1. **Glided Over Gap 1 (Idempotency Race Condition & Double Billing)**:
    Notice Step 1 and Step 4. The model uses Redis *only* to read at the start and write at the very end. If two duplicate requests for `tx_999` arrive simultaneously (5ms apart due to a client retry), both requests execute Step 1 before either has completed Step 4. Both find `cached_status` is `None`. **Both proceed to Step 2 and debit the source account twice**. The customer is double-billed.
 2. **Glided Over Gap 2 (Lost Updates Under Default Isolation)**:
-   In Step 2, the model runs a standard `SELECT balance` followed by an `UPDATE`. Under PostgreSQL's default `READ COMMITTED` isolation, this is a non-atomic read-then-write. If Account A has $100 and two transfers of $80 are submitted concurrently, both transactions read `source_bal = 100`, both pass the check `100 >= 80`, and both execute `UPDATE accounts SET balance = balance - 80`. The balance drops to **-$60**, violating account solvency invariants. The query lacked `FOR UPDATE` row-locking!
+   In Step 2, the model runs a standard `SELECT balance` followed by an `UPDATE`. Under PostgreSQL's default `READ COMMITTED` isolation, this is a non-atomic read-then-write. If Account A has \$100 and two transfers of \$80 are submitted concurrently, both transactions read `source_bal = 100`, both pass the check `100 >= 80`, and both execute `UPDATE accounts SET balance = balance - 80`. The balance drops to **-\$60**, violating account solvency invariants. The query lacked `FOR UPDATE` row-locking!
 3. **Glided Over Gap 3 (Catastrophic Split-Brain on Gateway Timeout)**:
    In Step 3, the database transaction has *already committed* before the external HTTP call is initiated! If the external banking gateway times out or returns HTTP 500, the local database money transfer has **already executed and committed**. The client receives HTTP 502, but the customer's money is gone, with no reconciliation record, no compensating rollback, and no outbox event. The nominal persona created an irreconcilable financial ledger discrepancy.
 
@@ -4551,7 +4551,7 @@ flowchart TD
 A foundational error in AI engineering is the **Boolean Invariant Formal Equivalence Fallacy**: assuming that because an LLM was prompted to be an auditor, its output string `"Code is secure"` carries the weight of a mathematical proof.
 
 To eliminate this vulnerability, the enterprise blueprint enforces strict separation between:
-1. **Deterministic Out-of-Band Tooling ($K^{\text{det}} \in \{0, 1\}$)**: Compilers, Abstract Syntax Tree (AST) parsers, static analyzers, and SMT solvers run outside the LLM context. If code contains a syntax error, an unhandled promise, or a cyclic dependency, the deterministic gateway terminates the pipeline immediately. The LLM is never invoked to evaluate what a 5-millisecond deterministic script can verify.
+1. **Deterministic Out-of-Band Tooling ($K^{\text{det}} \in \lbrace 0, 1 \rbrace$)**: Compilers, Abstract Syntax Tree (AST) parsers, static analyzers, and SMT solvers run outside the LLM context. If code contains a syntax error, an unhandled promise, or a cyclic dependency, the deterministic gateway terminates the pipeline immediately. The LLM is never invoked to evaluate what a 5-millisecond deterministic script can verify.
 2. **Probabilistic Neural Auditing ($\widehat{K} \in [0, 1]$)**: For semantic properties that cannot be captured by static AST rules—such as architectural trade-offs, cross-service race condition scenarios, and unstated requirement gaps—the system invokes neural reviewer agents conditioned with the 7-Tuple Operational Contract.
 
 #### The Logit Masking Realization Law
@@ -4559,7 +4559,7 @@ Systems architects must uphold the mathematical boundary between in-context prom
 
 $$\Delta z_v = \mathbf{h}_L^T W_U[:, v] \in \mathbb{R} \quad \text{(Finite In-Context Soft Steering)}$$
 
-$$M(v) \in \{0, -\infty\} \quad \text{(External Hard Runtime Masking)}$$
+$$M(v) \in \lbrace 0, -\infty \rbrace \quad \text{(External Hard Runtime Masking)}$$
 
 $$z_v^{\text{effective}} = \frac{z_v + \Delta z_v}{\tau} + M(v)$$
 
@@ -4573,7 +4573,7 @@ $$z_v^{\text{effective}} = \frac{z_v + \Delta z_v}{\tau} + M(v)$$
 In standard multi-agent frameworks, consensus is frequently computed via democratic majority voting (e.g., 2-out-of-3 agents approve). In enterprise systems engineering, democratic voting is rejected as mathematically invalid:
 
 $$\text{Final Verdict} = \begin{cases} 
-\text{REJECT}, & \text{if } \exists d \in \bigcup_{i=1}^M \mathcal{D}_i \text{ such that } \text{Severity}(d) \in \{\text{Sev-1}, \text{Sev-2}\} \text{ and } \neg\text{Waived}(d) \\
+\text{REJECT}, & \text{if } \exists d \in \bigcup_{i=1}^M \mathcal{D}_i \text{ such that } \text{Severity}(d) \in \lbrace \text{Sev-1}, \text{Sev-2} \rbrace \text{ and } \neg\text{Waived}(d) \\
 \text{APPROVE}, & \text{otherwise}
 \end{cases}$$
 
