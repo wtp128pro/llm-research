@@ -13,7 +13,7 @@ The 5-Point Enterprise Invariant Readiness Scorecard evaluates LLM agent deploym
 | **1** | **Structural Envelope Protocol** | Control and data planes strictly isolated via distinct delimiters (`<system_persona>` vs `<untrusted_artifact>`) | In-band prompt injection; payload execution as system instruction | AST entity sanitizer & boundary parser |
 | **2** | **Maker vs. Checker Orthogonality** | Generating agent and auditing agent maintain separate KV caches and distinct system personas | Echo chamber sycophancy; confirmation bias approval | Decoupled agent execution harnesses |
 | **3** | **Active Input Gap Detection** | System halts and flags missing parameters instead of hallucinating defaults | Plausibility trap; silent architectural rot; downstream failure | Blocking `HALTED_INPUT_GAP` schema response |
-| **4** | **Runtime CFG Logit Clamping** | Schema conformity enforced via token masking ($z_v = -\infty$) rather than soft attention guidance | Hallucinated formatting; parser crashes; invalid payload ingestion | External grammar-constrained decoder |
+| **4** | **Runtime CFG Logit Clamping** | Schema conformity enforced via token masking ($`z_v = -\infty`$) rather than soft attention guidance | Hallucinated formatting; parser crashes; invalid payload ingestion | External grammar-constrained decoder |
 | **5** | **Severity-Over-Majority Veto** | A single verified Sev-1 defect halts deployment regardless of consensus headcount | High-confidence catastrophe approval via unweighted majority vote | Multi-agent veto adjudication gate |
 
 ---

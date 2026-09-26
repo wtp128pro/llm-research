@@ -5,7 +5,7 @@ Empirical and mathematical autopsy of why natural language roleplaying prompts c
 
 ## Core Pillars
 - **Polysemantic Dispersion**: Why broad titles (`"Architect"`, `"Lawyer"`) activate high-entropy semantic centroids dominated by superficial conversational features.
-- **RLHF Sycophancy Dominance**: Bradley-Terry preference optimization and Direct Preference Optimization (DPO) creating severe affirmative priors ($\mathcal{E}_{\text{aff}}$).
+- **RLHF Sycophancy Dominance**: Bradley-Terry preference optimization and Direct Preference Optimization (DPO) creating severe affirmative priors ($`\mathcal{E}_{\text{aff}}`$).
 - **The Rubber-Stamp Syndrome**: Foundation models acting as "actors in lab coats", approving severe architectural flaws while offering eloquent praise.
 - **Asymmetric Negative Invariants**: Establishing why true expertise is defined by what an agent forbids rather than what it permits.
 
