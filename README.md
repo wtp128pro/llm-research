@@ -55,7 +55,7 @@ This research provides the first end-to-end mechanistic, mathematical, and archi
 
 | Track | Title | Description | Primary References |
 | :---: | :--- | :--- | :--- |
-| **01** | **[Operational Persona Engineering](research/01-operational-personas/)** | Formalizes personas as a closed 7-tuple $\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle$, establishing an Adversarial Epistemic Stance ($`\mathcal{E}_{\text{adv}}`$) and the Logit Masking Realization Law. | [`specs/7-tuple-persona-spec.md`](specs/7-tuple-persona-spec.md)<br>Paper §Layer 1 |
+| **01** | **[Operational Persona Engineering](research/01-operational-personas/)** | Formalizes personas as a closed 7-tuple $\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle$, establishing an Adversarial Epistemic Stance ($\mathcal{E}_{\text{adv}}$) and the Logit Masking Realization Law. | [`specs/7-tuple-persona-spec.md`](specs/7-tuple-persona-spec.md)<br>Paper §Layer 1 |
 | **02** | **[Vector Space Geometry & Encodings](research/02-vector-space-geometry/)** | Analyzes tokenization dilation, anisotropy ("cone effect"), RoPE Givens rotations, YaRN extrapolation, and mathematical attention sink decoupling ($0 \dots 3$ vs $4 \dots k$). | Paper §Layer 2 |
 | **03** | **[Transformer Inference Dynamics](research/03-transformer-mechanistics/)** | Explores residual stream communication, $QK/OV$ induction circuits, associative MLP memories, Top-$k$ Sparse Autoencoders (SAEs), and CoT $\text{TC}^0 \to \text{P}$ circuit complexity. | Paper §Layer 3 |
 | **04** | **[Nominal Persona Pathology](research/04-nominal-persona-pathology/)** | Deconstructs polysemantic dispersion, Bradley-Terry RLHF sycophancy dominance, and why true expertise is defined by what an agent *forbids*. | Paper §Layer 4 |
@@ -74,32 +74,24 @@ This research provides the first end-to-end mechanistic, mathematical, and archi
 | **Latent Representation** | Diffuse, high-entropy semantic centroid | Dense, low-entropy attractor basin |
 | **Attention Circuits** | High-frequency boilerplate matching | Active Q-K invariant auditing |
 | **Memory Retrieval (MLP)** | High-frequency web cliches & flattery | Specialized domain sub-networks |
-| **Epistemic Stance** | Sycophantic Affirmative Prior ($`\mathcal{E}_{\text{aff}}`$) | Adversarial Falsification ($`\mathcal{E}_{\text{adv}}`$) |
+| **Epistemic Stance** | Sycophantic Affirmative Prior ($\mathcal{E}_{\text{aff}}$) | Adversarial Falsification ($\mathcal{E}_{\text{adv}}$) |
 | **Handling Input Gaps** | The Plausibility Trap (silent invention) | Blocking Sev-1 Veto Gate |
 | **Failure Adjudication** | Unweighted democratic majority voting | Severity-Over-Majority rule |
 | **System Integration** | Flat string concatenation (in-band) | Two-plane structural envelopes |
 
 ### 1. The Operational Persona 7-Tuple Model
-
-$$
-\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle
-$$
-
+$$\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle$$
 * $\mathcal{I}$: Identity & Explicit Scope Boundaries (Anti-Scope)
-* $\mathcal{E}$: Epistemic Stance ($`\mathcal{E}_{\text{adv}}`$ vs $`\mathcal{E}_{\text{aff}}`$)
-* $\mathcal{K}$: Invariants Checklist ($`\mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}`$)
+* $\mathcal{E}$: Epistemic Stance ($\mathcal{E}_{\text{adv}}$ vs $\mathcal{E}_{\text{aff}}$)
+* $\mathcal{K}$: Invariants Checklist ($\mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}$)
 * $\mathcal{H}$: Adversarial Attack Heuristics & Stress Vectors
 * $\mathcal{T}$: Permitted Out-of-Band Tool Matrix
 * $\mathcal{R}$: Structured Output Schema with Mandatory Proof Counterexamples
-* $\mathcal{S}$: Monotonic Severity Scoring ($`\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}`$)
+* $\mathcal{S}$: Monotonic Severity Scoring ($\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}$)
 
 ### 2. The Logit Masking Realization Law
-
-$$
-\Delta z_{t, v} = \mathbf{w}_U(v)^T \Delta \mathbf{h}_t^{(L)}
-$$
-
-In-context prompt constraints induce *finite logit attenuation* ($`\Delta z_v \ll 0`$), driving $P(v) \to 0$ without guaranteeing impossibility. Hard negative constraints ($`z_v = -\infty`$) strictly require out-of-band runtime logit decoders (Context-Free Grammar / CFG masks).
+$$\Delta z_{t, v} = \mathbf{w}_U(v)^T \Delta \mathbf{h}_t^{(L)}$$
+In-context prompt constraints induce *finite logit attenuation* ($\Delta z_v \ll 0$), driving $P(v) \to 0$ without guaranteeing impossibility. Hard negative constraints ($z_v = -\infty$) strictly require out-of-band runtime logit decoders (Context-Free Grammar / CFG masks).
 
 ### 3. Decoupled 4-Tier Verification Blueprint
 1. **Ingestion & Control Plane**: Two-plane structural delimiter fencing (`<system_persona>` vs `<untrusted_artifact>`) preventing in-band prompt injection.
@@ -117,7 +109,7 @@ In-context prompt constraints induce *finite logit attenuation* ($`\Delta z_v \l
 | **1** | **Structural Envelope Protocol** | Control and data plane isolation | Delimiter fencing & AST sanitization |
 | **2** | **Maker vs. Checker Orthogonality** | Decoupled KV-caches & stances | Independent multi-agent harness |
 | **3** | **Active Input Gap Detection** | Halts on missing parameters | `HALTED_INPUT_GAP` schema response |
-| **4** | **Runtime CFG Logit Clamping** | External grammar enforcement | $`z_v = -\infty`$ logit processors |
+| **4** | **Runtime CFG Logit Clamping** | External grammar enforcement | $z_v = -\infty$ logit processors |
 | **5** | **Severity-Over-Majority Veto** | Sev-1 defect halts pipeline | Single-veto consensus engine |
 
 Detailed implementation criteria: [`specs/readiness-scorecard.md`](specs/readiness-scorecard.md)
