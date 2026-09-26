@@ -4,11 +4,9 @@
 
 An Operational Persona is defined as a closed 7-tuple:
 
-
-```math
+$$
 \mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle
-```
-
+$$
 
 Unlike nominal prompts ("You are an expert"), an operational persona functions as a strict boundary condition in the continuous dynamical system of the transformer's latent space.
 
@@ -22,13 +20,13 @@ Unlike nominal prompts ("You are an expert"), an operational persona functions a
 - **Epistemic Humility Rule**: Rejection of questions falling outside the defined operational envelope.
 
 ### 2. Epistemic Stance ($\mathcal{E}$)
-- **Adversarial Verification Stance ($`\mathcal{E}_{\text{adv}}`$)**: Default prior assuming incoming artifacts contain latent concurrency races, input gaps, or unhandled failures until proven otherwise.
+- **Adversarial Verification Stance ($``\mathcal{E}_{\text{adv}}``$)**: Default prior assuming incoming artifacts contain latent concurrency races, input gaps, or unhandled failures until proven otherwise.
 - **Suppression of Affirmative Bias**: Mathematical counter-pressure against the base model's RLHF sycophancy prior.
 - **Asymmetric Verification**: Aligned with Popperian falsification—a single invariant violation falsifies the entire proposal.
 
-### 3. Non-Negotiable Invariants ($`\mathcal{K} = \mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}`$)
-- **Deterministic Invariants ($`\mathcal{K}_{\text{det}}`$)**: Rules verifiable via deterministic tooling (type-checkers, compilers, AST parsers, linters).
-- **Neural Invariants ($`\mathcal{K}_{\text{neural}}`$)**: Semantic properties requiring transformer contextual evaluation (e.g., distributed state isolation, architectural boundary preservation).
+### 3. Non-Negotiable Invariants ($``\mathcal{K} = \mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}``$)
+- **Deterministic Invariants ($``\mathcal{K}_{\text{det}}``$)**: Rules verifiable via deterministic tooling (type-checkers, compilers, AST parsers, linters).
+- **Neural Invariants ($``\mathcal{K}_{\text{neural}}``$)**: Semantic properties requiring transformer contextual evaluation (e.g., distributed state isolation, architectural boundary preservation).
 - **Enforcement Principle**: Any violation of an invariant in $\mathcal{K}$ triggers an automatic blocking veto ($\text{Sev-1}$).
 
 ### 4. Adversarial Attack Heuristics ($\mathcal{H}$)
@@ -50,17 +48,17 @@ Unlike nominal prompts ("You are an expert"), an operational persona functions a
   - `input_gaps`: Array of missing architectural specifications preventing safe review.
 
 ### 7. Quantitative Confidence & Severity Scoring ($\mathcal{S}$)
-- **Severity Ranking**: Strict monotonic ordering: $`\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}`$.
+- **Severity Ranking**: Strict monotonic ordering: $``\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}``$.
 - **Severity-Over-Majority Law**:
   
-```math
-\text{Final Verdict} = \begin{cases} \text{BLOCK}, & \exists i \in \mathcal{A} \text{ s.t. } \text{Severity}(i) = \text{Sev-1} \\ \text{Consensus}(\mathcal{A}), & \text{otherwise} \end{cases}
-```
 
+$$
+\text{Final Verdict} = \begin{cases} \text{BLOCK}, & \exists i \in \mathcal{A} \text{ s.t. } \text{Severity}(i) = \text{Sev-1} \\\\ \text{Consensus}(\mathcal{A}), & \text{otherwise} \end{cases}
+$$
 
 ---
 
 ## Logit Masking Realization Law
 
-1. **In-Context Negative Constraints**: Provide finite logit attenuation ($`\Delta z_v \ll 0`$), driving $P(v) \to 0$ without guaranteeing mathematical impossibility.
-2. **Deterministic Hard Clamping**: Strict logit masking ($`z_v = -\infty`$) requires external runtime decoding constraints (CFG decoders, regex masks, JSON grammar validators).
+1. **In-Context Negative Constraints**: Provide finite logit attenuation ($``\Delta z_v \ll 0``$), driving $P(v) \to 0$ without guaranteeing mathematical impossibility.
+2. **Deterministic Hard Clamping**: Strict logit masking ($``z_v = -\infty``$) requires external runtime decoding constraints (CFG decoders, regex masks, JSON grammar validators).
