@@ -617,7 +617,9 @@ $$\mathcal K = \mathcal K_\text{det} \cup \mathcal K_\text{neural}$$
 
 1. **Deterministic Tool Invariants (`K_det`)**:
    Properties verified deterministically by invoking external tools in `T`:
+
 $$K_i^\text{det}(A) \in \lbrace 0, 1\rbrace $$
+
    - `K_ast`: Syntactic tree conformity verified via AST parsers (e.g., `ast_grep`).
    - `K_smt`: Satisfiability and boundary invariants proven by formal solvers (e.g., Z3).
    - `K_type`: Static type-safety proven by compilers/typecheckers (`mypy --strict`, `clang++ -Wall`).
@@ -625,7 +627,9 @@ $$K_i^\text{det}(A) \in \lbrace 0, 1\rbrace $$
 
 2. **Probabilistic Neural Hypotheses (`K_neural`)**:
    High-level architectural properties where formal tools lack specifications:
+
 $$\widehat{K}_j(A) \in [0, 1]$$
+
    - `K_concurr`: Concurrency hazard identification under complex distributed flows.
    - `K_intent`: Semantic mismatch between business requirements and algorithmic structure.
    - *Crucial Rule*: A neural invariant failure is treated strictly as a **hypothesis**. It cannot trigger an automated Sev-1 rejection unless supported by an **executable falsification proof** (Section 3.7).
@@ -958,6 +962,7 @@ Please review the following authentication code and provide your expert feedback
 #### 5.3 Approach B: The Operationalized 7-Tuple Persona Contract
 
 ##### Specification Definition:
+
 $$\mathcal P_\text{SecurityAudit} = \langle \mathcal I, \mathcal E, \mathcal K, \mathcal H, \mathcal T, \mathcal R, \mathcal S \rangle$$
 
 - **Identity (`I`)**: Scope restricted strictly to memory bounds, concurrency thread-safety, and cryptographic invariant validation. Non-goal: code style, throughput optimization.
@@ -1357,6 +1362,7 @@ Before entering the continuous vector space, natural language persona prompts mu
 
 2. **SentencePiece Unigram Language Modeling** (Kudo & Richardson, 2018):
    SentencePiece treats the input text as a raw stream of characters, including whitespace (typically replaced by a meta-symbol like `_`), and initializes a large seed vocabulary. It iteratively prunes tokens that minimize the loss of a unigram language model, optimizing the probability of the segmented corpus:
+
 $$\mathcal L = \sum_{s \in \mathcal D} \log \left( \sum_{\mathbf x \in \text{Seg}(s)} P(\mathbf x) \right)$$
 
 ##### Subword Fragmentation of Persona Prompts
@@ -1423,6 +1429,7 @@ In architectures utilizing weight tying (Press & Wolf, 2017), the input token em
    - Output unembedding projection matrix: $W_U \in \mathbb R^{d \times |\mathcal V|}$.
    - Under tied weights: `W_U = W_E^T`.
    - The vocabulary logits $\mathbf z \in \mathbb R^{1 \times |\mathcal V|}$ are computed via right-multiplication:
+
 $$\mathbf z = \mathbf h W_U = \mathbf h W_E^T$$
 
 2. **Column Vector Convention** (standard in linear algebra and mechanistic interpretability literature):
@@ -1431,6 +1438,7 @@ $$\mathbf z = \mathbf h W_U = \mathbf h W_E^T$$
    - Output unembedding projection matrix: $W_U \in \mathbb R^{|\mathcal V| \times d}$.
    - Under tied weights: $W_U = W_E$.
    - The vocabulary logits $\mathbf z \in \mathbb R^{|\mathcal V| \times 1}$ are computed via left-multiplication:
+
 $$\mathbf z = W_U \mathbf h = W_E \mathbf h$$
 
 **Dimensional Boundary Audit**: Defining $W_U \in \mathbb R^{|\mathcal V| \times d}$ while simultaneously declaring `W_U = W_E^T` is a dimensional impossibility because $W_E^T \in \mathbb R^{d \times |\mathcal V|}$, which matches only if $|\mathcal V| = d$. In practice, $|\mathcal V| \gg d$ (e.g., $128{,}256 \gg 4096$).
@@ -1640,7 +1648,9 @@ The mathematical formulation of RoPE has profound consequences for persona promp
    
 2. **Frequency Rotation Dynamics**:
    In RoPE, the high-frequency dimensions (where $\theta_j$ is large) rotate hundreds or thousands of times across a $4000$-token span:
+
 $$\phi_j = \Delta \cdot \theta_j = (t - j) \cdot b^{-2(j-1)/d_k}$$
+
    These rapid phase rotations cause the inner products in high-frequency channels to oscillate violently and average toward zero—a property known as the Riemann-Lebesgue decay of rotary embeddings (Su et al., 2021).
    
 3. **Low-Frequency Channel Dominance**:
@@ -1666,7 +1676,9 @@ When the sequence length `t` exceeds the model's pretraining context window (`t 
 
 1. **Rotary Phase Collisions (Catastrophic Wrap-Around)**:
    For intermediate and high frequencies, when relative distance $\Delta = t - j$ exceeds `L_train`, the rotation angle $\Delta \theta_j$ wraps around the circle multiple times. Distant tokens produce identical relative angles modulo $2\pi$:
+
 $$(t_1 - j)\theta_j \equiv (t_2 - j)\theta_j \pmod{2\pi}$$
+
    This creates false relative proximity peaks between completely unrelated distant context and the persona prefix, triggering hallucination and syntax degradation.
 
 2. **Out-of-Distribution Phase Extrapolation on Low Frequencies**:
@@ -1678,22 +1690,30 @@ $$(t_1 - j)\theta_j \equiv (t_2 - j)\theta_j \pmod{2\pi}$$
 ##### Architectural Solutions: Interpolation and YaRN
 To preserve persona steering across context lengths exceeding `L_train`, state-of-the-art architectures deploy position interpolation techniques:
 
-- **Linear Position Interpolation (PI)** (Chen et al., 2023):
-  Downscales position indices by a scale factor $s = L / L_\text{train}$:
+##### 1. Linear Position Interpolation (PI) (Chen et al., 2023)
+Downscales position indices by a scale factor $s = L / L_\text{train}$:
+
 $$m' = \frac{m}{s} \implies \tilde{\mathbf q}_{m'} = \mathbf R_{\Theta, m/s}^{d_k} \mathbf q_m$$
-  This maps out-of-distribution sequence lengths back into the pre-trained $[0, L_\text{train}]$ domain, preventing phase extrapolation at the cost of compressing high-frequency local resolution.
 
-- **NTK-Aware RoPE Scaling**:
-  Rather than scaling all frequencies uniformly, Neural Tangent Kernel (NTK) scaling modifies the base frequency `b`:
+This maps out-of-distribution sequence lengths back into the pre-trained $[0, L_\text{train}]$ domain, preventing phase extrapolation at the cost of compressing high-frequency local resolution.
+
+##### 2. NTK-Aware RoPE Scaling
+Rather than scaling all frequencies uniformly, Neural Tangent Kernel (NTK) scaling modifies the base frequency `b`:
+
 $$b' = b \cdot s^{\frac{d_k}{d_k - 2}}$$
-  This leaves high-frequency dimensions virtually unscaled (preserving vital local token dependencies) while scaling low-frequency dimensions to accommodate long-range context without phase collisions.
 
-- **YaRN (Yet another RoPE extensioN)** (Peng et al., 2023):
-  YaRN defines three frequency regimes using a smooth ramp function $\gamma(r)$ based on the wavelength $\lambda_j = \frac{2\pi}{\theta_j}$:
+This leaves high-frequency dimensions virtually unscaled (preserving vital local token dependencies) while scaling low-frequency dimensions to accommodate long-range context without phase collisions.
+
+##### 3. YaRN (Yet another RoPE extensioN) (Peng et al., 2023)
+YaRN defines three frequency regimes using a smooth ramp function $\gamma(r)$ based on the wavelength $\lambda_j = \frac{2\pi}{\theta_j}$:
+
 $$\gamma(r) = \begin{cases} 0 & \text{if } \frac{L_\text{train}}{\lambda_j} \gt \beta_\text{high} \\\\ 1 & \text{if } \frac{L_\text{train}}{\lambda_j} \lt \beta_\text{low} \\\\ \frac{L_\text{train}/\lambda_j - \beta_\text{low}}{\beta_\text{high} - \beta_\text{low}} & \text{otherwise} \end{cases}$$
-  YaRN applies no interpolation to high frequencies ($\gamma = 0$), full linear interpolation to low frequencies ($\gamma = 1$), and smooth blending in between. Crucially, YaRN introduces an attention temperature scaling factor:
+
+YaRN applies no interpolation to high frequencies ($\gamma = 0$), full linear interpolation to low frequencies ($\gamma = 1$), and smooth blending in between. Crucially, YaRN introduces an attention temperature scaling factor:
+
 $$\text{Score} = \frac{\tilde{\mathbf q}_t^T \tilde{\mathbf k}_j}{\sqrt{d_k}} \times \sqrt{t_\text{scale}}, \quad t_\text{scale} = 1 + 0.1 \ln s$$
-  This prevents softmax entropy explosion and maintains crisp, focused attention on the persona prefix even at $128\text{k}$ context lengths.
+
+This prevents softmax entropy explosion and maintains crisp, focused attention on the persona prefix even at $128\text{k}$ context lengths.
 
 ---
 
@@ -1882,7 +1902,9 @@ Layer 0 (Input)     [ Static Lookup: W_E ∈ ℝ^{|V| × d_model} + RoPE Positio
 
 2. **Middle Layers (Layers `L/4` to `2L/3`) — Associative Memory Recall & Induction Circuits**:
    As shown by Geva et al. (2021) (*Transformer Feed-Forward Layers Are Key-Value Memories*), feed-forward layers act as associative key-value stores:
+
 $$\text{MLP}(\mathbf x) = \sum_{m=1}^{d_\text{ff}} \sigma(\mathbf x \cdot \mathbf k_m^\text{mlp}) \mathbf v_m^\text{mlp}$$
+
    Conditioned on the contextualized persona vectors, specific intermediate neurons fire, recalling domain-specific knowledge bases (e.g., distributed consensus protocols, memory safety invariants, cryptographic primitives). Concurrently, **induction heads** (Olsson et al., 2022) form circuits that actively query the operational persona keys at `t ∈ [4, k]`, copying patterns and enforcing behavioral rules established in the prefix.
 
 3. **Deep Layers (Layers `2L/3` to `L`) — Epistemic Steering & Unembedding Shaping**:
@@ -2232,7 +2254,9 @@ Current Token [A] at pos κ ──► Emits Query q_κ searching for "Preceded b
 In the transformer circuits framework, multi-head attention can be factored into two independent bilinear operators:
 1. The **$QK$-circuit** ($W_{QK}^{(l, h)} = W_Q^{(l, h) T} W_K^{(l, h)} \in \mathbb R^{d \times d}$), where $W_Q^{(l, h)}, W_K^{(l, h)} \in \mathbb R^{d_k \times d}$, which determines the scalar attention pattern $A_{\kappa, j}$ directly from residual stream features via $\alpha_{\kappa, j} \propto \mathbf x_\kappa^T W_{QK}^{(l, h)} \mathbf x_j$.
 2. The **`OV`-circuit** ($W_{OV}^{(l, h)} = W_O^{(l, h)} W_V^{(l, h)} \in \mathbb R^{d \times d}$), formulated strictly in this multiplication order. Because the value projection $W_V^{(l, h)} \in \mathbb R^{d_k \times d}$ maps the residual stream input into head value space ($\mathbf v = W_V^{(l, h)} \mathbf x \in \mathbb R^{d_k}$) and the output projection $W_O^{(l, h)} \in \mathbb R^{d \times d_k}$ maps head values back to the residual stream ($\Delta \mathbf h = W_O^{(l, h)} \mathbf v \in \mathbb R^d$), the composite product $W_{OV}^{(l, h)} = W_O^{(l, h)} W_V^{(l, h)}$ is dimensionally well-defined in $\mathbb R^{d \times d}$. For any residual stream vector $\mathbf x \in \mathbb R^d$, the operation:
+
 $$(W_O^{(l, h)} W_V^{(l, h)}) \mathbf x = W_O^{(l, h)} (W_V^{(l, h)} \mathbf x) \in \mathbb R^d$$
+
    is a valid linear endomorphism on the residual stream, determining *what* vector representation is read from position `j` and deposited at position κ.
 
 An induction head circuit is formed when an attention head at layer $l_2$ composes with a "previous token head" at layer `l_1`:
@@ -2305,11 +2329,15 @@ As the forward pass traverses layers  1 through `L`:
    Attention heads focus on syntax parsing, token merging, attention sink routing (absorbing unneeded softmax mass into positions 0..3), and local n-gram patterns. The persona prompt is parsed into semantic phrases and lexical structures.
 2. **Middle Layers ($l \in [L/4, 3L/4]$)**:
    This is the **semantic and behavioral routing core**. Here, induction heads and specialized routing heads actively attend to the persona prefix keys stored in the KV-cache. If the prompt contains explicit epistemic constraints (e.g., an adversarial falsification stance), attention heads read these vectors and write persistent "steering directions" into the residual stream of the current token:
+
 $$\mathbf h_l^t \leftarrow \mathbf h_l^t + \beta_\text{persona} \mathbf d_\text{adversarial}$$
+
    These additive directions shift the latent state into the receptive fields of specific MLP memory circuits.
 3. **Late Layers ($l \in [3L/4, L]$)**:
    The late layers resolve token competition and prepare the state for final unembedding projection `W_U`. The accumulated persona steering vector prevents the state from falling into default sycophantic attractors:
+
 $$\text{Logits} = W_U \text{RMSNorm}\left(\mathbf h_L^t\right)$$
+
    If $\mathbf h_L^t$ contains a strong positive component along $\mathbf d_\text{adversarial}$, the projection $W_U \mathbf h_L^t$ assigns high logit scores to critical, skeptical tokens (`"However"`, `"Vulnerability"`, `"Violation"`) while heavily penalizing ungrounded affirmative tokens (`"Certainly"`, `"Great idea"`, `"Approved"`).
 
 ---
@@ -2387,7 +2415,9 @@ $$\mathbf x_\text{conditioned} = \mathbf x_\text{raw} + \mathbf v_\text{crypto-p
 
 This displacement shifts the residual state into the activation basin of **specialized domain key detectors**:
 - Key detectors sensitive to cryptographic edge cases ($\mathbf k_\text{nonce-reuse}$, $\mathbf k_\text{timing-sidechannel}$, $\mathbf k_\text{constant-time-violation}$) suddenly achieve high scalar products:
+
 $$\mathbf k_\text{nonce-reuse}^T \mathbf x_\text{conditioned} \gg 0$$
+
 - These activated neurons suppress default chat completions and emit value vectors $\mathbf v_\text{nonce-reuse}$ that inject deep domain knowledge and vulnerability definitions into the stream.
 - The downstream attention and unembedding layers receive these specialized concepts, compelling the model to audit the input code for cryptographic weaknesses rather than merely praising its formatting.
 
@@ -2490,9 +2520,13 @@ While activation steering operates at the internal layer level and is impervious
 
 Adversarial token optimization algorithms—such as Greedy Coordinate Gradient (GCG; Zou et al., 2023)—can compute optimized adversarial suffixes ($x_\text{adv}$) that search the discrete token space to counteract internal model states. Mechanistically:
 - An adversarial suffix creates early-layer attention patterns that write an equal and opposite residual vector $\Delta \mathbf h_\text{adv}^l$ into the residual stream:
+
 $$\Delta \mathbf h_\text{adv}^l \approx -\gamma \hat{\mathbf v}_\text{steer}^l$$
+
 - When the hardware kernel executes the steered forward pass:
+
 $$\mathbf h_l' = \mathbf h_l + \Delta \mathbf h_\text{adv}^l + \gamma \hat{\mathbf v}_\text{steer}^l \approx \mathbf h_l$$
+
   the adversarial suffix cancels out the injected steering vector, effectively neutralizing the safety or auditor persona and re-establishing the unsteered, sycophantic baseline. Robust deployment requires combining activation steering with input token sanitization and perplexity filters.
 
 #### 5.2 Monosemanticity and Feature Dictionary Learning via Sparse Autoencoders (SAEs)
@@ -3064,6 +3098,7 @@ $$
 \hat{\mathbf x} = W_\text{dec} \mathbf f(\mathbf x) + \mathbf b_\text{dec} = \sum_{j=1}^M f_j(\mathbf x) \mathbf d_j + \mathbf b_\text{dec}
 \end{aligned}
 $$
+
 $$\mathcal L_\text{SAE} = \|\mathbf x - \hat{\mathbf x}\|_2^2 + \lambda \|\mathbf f(\mathbf x)\|_1$$
 
 ##### Top-k SAE Architecture (Gao et al., 2024):
