@@ -108,22 +108,18 @@ $$\mathcal{P}_{\text{nominal}} = \text{"You are a world-class Principal Software
 
 In this research initiative, we deconstruct why nominal prompting fails at the hardware and algorithmic level, and establish the theoretical and practical foundations of **Operational Persona Engineering**. We prove that an LLM persona is not a costume worn by a human-like mind; it is an **initial boundary condition in a continuous dynamical system** that must be governed by formal mathematical contracts, structural data-plane isolation, and deterministic verification gates.
 
-```text
-+----------------------------------------------------------------------------------------------------+
-|                               THE PARADIGM CUTOVER: COSPLAY VS. ENGINEERING                        |
-+----------------------------------------------------------------------------------------------------+
-| DIMENSION             | NOMINAL "COSPLAY" PROMPTING              | OPERATIONAL 7-TUPLE CONTRACTS    |
-+-----------------------+------------------------------------------+----------------------------------+
-| Conceptual Model      | Theatrical roleplay ("Act like an expert")| Dynamical boundary constraints   |
-| Latent Representation | Diffuse, high-entropy semantic centroid  | Dense, low-entropy attractor basin|
-| Attention Circuits    | High-frequency boilerplate matching      | Active Q-K invariant auditing    |
-| Memory Retrieval (MLP)| High-frequency web cliches & flattery    | Specialized domain sub-networks  |
-| Epistemic Stance      | Sycophantic Affirmative Prior (E_aff)    | Adversarial Falsification (E_adv)|
-| Handling Input Gaps   | The Plausibility Trap (silent invention) | Blocking Sev-1 Veto Gate         |
-| Failure Adjudication  | Unweighted democratic majority voting    | Severity-Over-Majority rule     |
-| System Integration    | Flat string concatenation (in-band)      | Two-plane structural envelopes   |
-+----------------------------------------------------------------------------------------------------+
-```
+### The Paradigm Cutover: Cosplay vs. Engineering
+
+| Dimension | Nominal "Cosplay" Prompting | Operational 7-Tuple Contracts |
+| :--- | :--- | :--- |
+| **Conceptual Model** | Theatrical roleplay ("Act like an expert") | Dynamical boundary constraints |
+| **Latent Representation** | Diffuse, high-entropy semantic centroid | Dense, low-entropy attractor basin |
+| **Attention Circuits** | High-frequency boilerplate matching | Active Q-K invariant auditing |
+| **Memory Retrieval (MLP)** | High-frequency web cliches & flattery | Specialized domain sub-networks |
+| **Epistemic Stance** | Sycophantic Affirmative Prior ($\mathcal{E}_{\text{aff}}$) | Adversarial Falsification ($\mathcal{E}_{\text{adv}}$) |
+| **Handling Input Gaps** | The Plausibility Trap (silent invention) | Blocking Sev-1 Veto Gate |
+| **Failure Adjudication** | Unweighted democratic majority voting | Severity-Over-Majority rule |
+| **System Integration** | Flat string concatenation (in-band) | Two-plane structural envelopes |
 
 ---
 
@@ -183,27 +179,12 @@ To translate these complex mathematical and mechanistic insights into actionable
 
 ### 2.1 The 4 Core Leadership Metaphors
 
-```text
-+----------------------------------------------------------------------------------------------------+
-|                               THE 4 CORE MANAGERIAL METAPHORS                                      |
-+----------------------------------------------------------------------------------------------------+
-| METAPHOR 1: The Generic Handyman vs. The Board-Certified Structural Inspector                     |
-| Focus: Layer 1 (Operational Invariants) & Layer 4 (Nominal Cosplay)                                |
-| Plain-English Concept: A job title sets mood; an invariant checklist forces verification.          |
-+----------------------------------------------------------------------------------------------------+
-| METAPHOR 2: The Ship's Electrical Grounding Wire vs. The Nautical Chart & GPS Waypoints           |
-| Focus: Layer 2 (Embedding Geometry, RoPE, and Attention Sinks)                                     |
-| Plain-English Concept: Delimiters stabilize hardware math; explicit constraints steer heading.   |
-+----------------------------------------------------------------------------------------------------+
-| METAPHOR 3: The Assembly Line Conveyor Belt, Factory Inspectors & The Engineer's Scratchpad       |
-| Focus: Layer 3 (Residual Stream Bus, Associative MLPs, and Chain of Thought)                       |
-| Plain-English Concept: Attention reads/writes to a shared bus; reasoning needs scratchpad space.   |
-+----------------------------------------------------------------------------------------------------+
-| METAPHOR 4: The Speculative Builder vs. The Geotechnical Engineer on an Unsurveyed Riverbed       |
-| Focus: Layer 5 (Input Gaps & The Plausibility Trap)                                                |
-| Plain-English Concept: Missing specs must halt production, not trigger creative guesswork.        |
-+----------------------------------------------------------------------------------------------------+
-```
+| Metaphor | Focus | Plain-English Concept |
+| :--- | :--- | :--- |
+| **Metaphor 1: The Generic Handyman vs. The Board-Certified Structural Inspector** | Layer 1 (Operational Invariants) & Layer 4 (Nominal Cosplay) | A job title sets mood; an invariant checklist forces verification. |
+| **Metaphor 2: The Ship's Electrical Grounding Wire vs. The Nautical Chart & GPS Waypoints** | Layer 2 (Embedding Geometry, RoPE, and Attention Sinks) | Delimiters stabilize hardware math; explicit constraints steer heading. |
+| **Metaphor 3: The Assembly Line Conveyor Belt, Factory Inspectors & The Engineer's Scratchpad** | Layer 3 (Residual Stream Bus, Associative MLPs, and Chain of Thought) | Attention reads/writes to a shared bus; reasoning needs scratchpad space. |
+| **Metaphor 4: The Speculative Builder vs. The Geotechnical Engineer on an Unsurveyed Riverbed** | Layer 5 (Input Gaps & The Plausibility Trap) | Missing specs must halt production, not trigger creative guesswork. |
 
 #### Metaphor 1: The Generic Handyman vs. The Board-Certified Inspector (Layers 1 & 4)
 * **The Situation**: You hire someone to inspect a 50-story skyscraper before purchase.
@@ -295,24 +276,11 @@ When briefing senior technology executives, present this structured 3-part argum
 #### Part 2: The Core Strategic Decision: When to Use What
 Enterprise architecture teams must classify AI governance into three distinct operational tiers:
 
-```text
-+----------------------------------------------------------------------------------------------------+
-|                               THE 3-TIER GOVERNANCE FRAMEWORK                                      |
-+----------------------------------------------------------------------------------------------------+
-| TIER 1: Low-Stakes Generative Tasks (Internal blogs, documentation rephrasing, exploratory ideation)|
-| Implementation: Standard In-Context Prompting + Basic Style Guides.                                |
-| Governance Cost: Low. Risk: Negligible.                                                           |
-+----------------------------------------------------------------------------------------------------+
-| TIER 2: Intermediate Analytical Tasks (Internal code generation, data extraction, test generation) |
-| Implementation: 7-Tuple Operational Persona + Epistemic Inversion (E_adv) + Typed JSON Schema.   |
-| Governance Cost: Moderate. Risk: Contained.                                                       |
-+----------------------------------------------------------------------------------------------------+
-| TIER 3: High-Stakes Autonomous Systems (CI/CD PR approval, auth services, legal review, billing)  |
-| Implementation: 7-Tuple Persona + Out-of-Band AST/SMT Tooling + External CFG Logit Masks         |
-|                 + Severity-Over-Majority Veto Gate + Cryptographic Human Waivers.                  |
-| Governance Cost: High. Risk: Zero Tolerance for Escaped Defects.                                   |
-+----------------------------------------------------------------------------------------------------+
-```
+| Governance Tier & Scope | Implementation Strategy | Governance Cost | Risk Profile |
+| :--- | :--- | :---: | :---: |
+| **Tier 1: Low-Stakes Generative Tasks**<br>*(Internal blogs, documentation rephrasing, exploratory ideation)* | Standard In-Context Prompting + Basic Style Guides | Low | Negligible |
+| **Tier 2: Intermediate Analytical Tasks**<br>*(Internal code generation, data extraction, test generation)* | 7-Tuple Operational Persona + Epistemic Inversion ($\mathcal{E}_{\text{adv}}$) + Typed JSON Schema | Moderate | Contained |
+| **Tier 3: High-Stakes Autonomous Systems**<br>*(CI/CD PR approval, auth services, legal review, billing)* | 7-Tuple Persona + Out-of-Band AST/SMT Tooling + External CFG Logit Masks + Severity-Over-Majority Veto Gate + Cryptographic Human Waivers | High | Zero Tolerance for Escaped Defects |
 
 #### Part 3: The 90-Day Execution Roadmap
 * **Days 1–30 (Audit & Deprecation)**: Audit all existing enterprise agent prompts. Eliminate all nominal cosplay directives (`"You are an expert..."`). Identify production review agents exhibiting the Rubber-Stamp Syndrome.
@@ -492,19 +460,13 @@ Through this recursive formulation, the persona vectors $K^{(P)}$ and $V^{(P)}$ 
 
 To maintain rigorous architectural hygiene, systems engineers must strictly decouple two distinct mechanisms often conflated under the label of "steering":
 
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│              IN-CONTEXT ATTENTION vs. REPRESENTATION ENGINEERING            │
-├──────────────────────────────────────┬──────────────────────────────────────┤
-│ In-Context KV-Cache Conditioning     │ Linear Activation Steering (CAA/RepE)│
-├──────────────────────────────────────┼──────────────────────────────────────┤
-│ • Non-linear, dynamic routing        │ • Fixed linear translation vector    │
-│ • Governed by query-key softmax      │ • Layer-specific direct injection    │
-│ • Dependent on context length & sink │ • Independent of context window      │
-│ • Attenuation risk (context rot)     │ • Preserved across infinite steps    │
-│ • Zero model parameter modification  │ • Modifies latent activations/hooks  │
-└──────────────────────────────────────┴──────────────────────────────────────┘
-```
+| In-Context KV-Cache Conditioning | Linear Activation Steering (CAA/RepE) |
+| :--- | :--- |
+| • Non-linear, dynamic routing | • Fixed linear translation vector |
+| • Governed by query-key softmax | • Layer-specific direct injection |
+| • Dependent on context length & sink | • Independent of context window |
+| • Attenuation risk (context rot) | • Preserved across infinite steps |
+| • Zero model parameter modification | • Modifies latent activations/hooks |
 
 1. **In-Context KV-Cache Attention Conditioning**:
    This is the standard autoregressive inference mechanism described above. The persona tokens reside in the context window. Their influence on the terminal state $h_L^{(m+n+t-1)}$ is entirely non-linear and mediated by the dynamic attention weights $\alpha_{l, k, i}^{(t)}$.
@@ -566,19 +528,15 @@ To transform persona specification into a formal engineering discipline, we defi
 
 $$\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle$$
 
-```text
-┌───────────────────────────────────────────────────────────────────────────────────────────┐
-│                     THE 7-TUPLE OPERATIONAL PERSONA SPECIFICATION                         │
-├───────────────────────────────────────────────────────────────────────────────────────────┤
-│  1. Identity & Mandate (I)      │ Domain Authority & Action Subspace Projection Π_I       │
-│  2. Epistemic Stance (E)        │ Cognitive Prior & Proof Burden (Adversarial/Synthesis)   │
-│  3. Mandatory Invariants (K)    │ Decoupled Deterministic Tool Rules & Neural Hypotheses  │
-│  4. Heuristic Attack Vectors (H)│ Systematic Stress Checklists & Boundary Edge Cases      │
-│  5. Permitted Tool Matrix (T)   │ Principle of Least Privilege: T ⊆ Tools                 │
-│  6. Output Rigor Schema (R)     │ Formal Boolean Validation Predicate R_valid: String → B │
-│  7. Defect Scoring Bounds (S)   │ Severity Classification, Veto Rules & Falsification     │
-└───────────────────────────────────────────────────────────────────────────────────────────┘
-```
+| Tuple Element | Mathematical Formalization & Scope Boundary |
+| :--- | :--- |
+| **1. Identity & Mandate ($\mathcal{I}$)** | Domain Authority & Action Subspace Projection $\Pi_{\mathcal{I}}$ |
+| **2. Epistemic Stance ($\mathcal{E}$)** | Cognitive Prior & Proof Burden (Adversarial/Synthesis) |
+| **3. Mandatory Invariants ($\mathcal{K}$)** | Decoupled Deterministic Tool Rules & Neural Hypotheses |
+| **4. Heuristic Attack Vectors ($\mathcal{H}$)** | Systematic Stress Checklists & Boundary Edge Cases |
+| **5. Permitted Tool Matrix ($\mathcal{T}$)** | Principle of Least Privilege: $\mathcal{T} \subseteq \text{Tools}$ |
+| **6. Output Rigor Schema ($\mathcal{R}$)** | Formal Boolean Validation Predicate $\mathcal{R}_{\text{valid}}: \text{String} \to \mathbb{B}$ |
+| **7. Defect Scoring Bounds ($\mathcal{S}$)** | Severity Classification, Veto Rules & Falsification |
 
 #### 3.1 Element 1: Identity & Mandate ($\mathcal{I}$)
 
@@ -597,23 +555,10 @@ The Epistemic Stance defines the agent’s default cognitive prior regarding the
 
 Operational engineering establishes four formal epistemic stances:
 
-```text
-┌─────────────────────────┬─────────────────────────┬─────────────────────────┬─────────────────────────┐
-│ Constructive Synthesis  │   Hostile Skepticism    │   Adversarial Auditor   │     Macro-Sentinel      │
-│  (E_synth)              │   (E_hostile)           │   (E_audit)             │     (E_macro)           │
-├─────────────────────────┼─────────────────────────┼─────────────────────────┼─────────────────────────┤
-│ Cognitive Prior:        │ Cognitive Prior:        │ Cognitive Prior:        │ Cognitive Prior:        │
-│ "Conflicting constraints│ "The artifact is        │ "Assumptions are fatal  │ "Local optimizations    │
-│ can be integrated into a│ defective until proven  │ defects; unproven claims│ produce catastrophic    │
-│ unified, verifiable     │ resilient under active  │ must be rejected as     │ systemic feedback       │
-│ architecture."          │ falsification."         │ untrusted."             │ failures."              │
-├─────────────────────────┼─────────────────────────┼─────────────────────────┼─────────────────────────┤
-│ Proof Burden:           │ Proof Burden:           │ Proof Burden:           │ Proof Burden:           │
-│ Demonstrates existence  │ Must construct minimal  │ Must map every line to  │ Must map systemic blast │
-│ of Pareto-optimal       │ counterexamples and     │ explicit invariant K_i  │ radius across 2+ layers │
-│ solutions.              │ exploit payloads.       │ or flag Sev-1 gap.      │ of abstraction.         │
-└─────────────────────────┴─────────────────────────┴─────────────────────────┴─────────────────────────┘
-```
+| Epistemic Dimension | Constructive Synthesis ($\mathcal{E}_{\text{synth}}$) | Hostile Skepticism ($\mathcal{E}_{\text{hostile}}$) | Adversarial Auditor ($\mathcal{E}_{\text{audit}}$) | Macro-Sentinel ($\mathcal{E}_{\text{macro}}$) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Cognitive Prior** | "Conflicting constraints can be integrated into a unified, verifiable architecture." | "The artifact is defective until proven resilient under active falsification." | "Assumptions are fatal defects; unproven claims must be rejected as untrusted." | "Local optimizations produce catastrophic systemic feedback failures." |
+| **Proof Burden** | Demonstrates existence of Pareto-optimal solutions. | Must construct minimal counterexamples and exploit payloads. | Must map every line to explicit invariant $\mathcal{K}_i$ or flag Sev-1 gap. | Must map systemic blast radius across 2+ layers of abstraction. |
 
 1. **Constructive Synthesis ($\mathcal{E}_{\text{synth}}$)**:
    - *Role*: Systems Architect / Maker.
@@ -643,19 +588,12 @@ Operational persona engineering explicitly bifurcates the invariant set $\mathca
 
 $$\mathcal{K} = \mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}$$
 
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    DECOUPLED INVARIANT ARCHITECTURE                         │
-├──────────────────────────────────────┬──────────────────────────────────────┤
-│ 1. Deterministic Tool Invariants     │ 2. Heuristic Neural Hypotheses       │
-│    (K_det)                           │    (K_neural)                        │
-├──────────────────────────────────────┼──────────────────────────────────────┤
-│ • Executed by external tooling       │ • Evaluated by LLM reasoning         │
-│ • Compilers, SMT (Z3), AST-grep      │ • Semantic contracts, intent sanity  │
-│ • Mathematically sound: K_i(A) ∈ {0,1}│ • Generates candidate falsifications │
-│ • Non-probabilistic truth ground     │ • MUST be verified by counterexample │
-└──────────────────────────────────────┴──────────────────────────────────────┘
-```
+| Deterministic Tool Invariants ($\mathcal{K}_{\text{det}}$) | Heuristic Neural Hypotheses ($\mathcal{K}_{\text{neural}}$) |
+| :--- | :--- |
+| • Executed by external tooling | • Evaluated by LLM reasoning |
+| • Compilers, SMT (Z3), AST-grep | • Semantic contracts, intent sanity |
+| • Mathematically sound: $K_i(A) \in \{0,1\}$ | • Generates candidate falsifications |
+| • Non-probabilistic truth ground | • MUST be verified by counterexample |
 
 1. **Deterministic Tool Invariants ($\mathcal{K}_{\text{det}}$)**:
    Properties verified deterministically by invoking external tools in $\mathcal{T}$:
@@ -852,19 +790,13 @@ When an engineer asks a standard model to "Review this code for defects," the mo
 
 To eliminate sycophancy, systems engineers must clearly distinguish between **In-Context Soft Attention Guidance** and **External Deterministic Logit Masking**:
 
-```text
-┌─────────────────────────────────────────────────────────────────────────────┐
-│          SOFT ATTENTION GUIDANCE vs. HARD RUNTIME LOGIT MASKING             │
-├──────────────────────────────────────┬──────────────────────────────────────┤
-│ In-Context Negative Prompts          │ External Runtime Logit Processor     │
-├──────────────────────────────────────┼──────────────────────────────────────┤
-│ • "Do not say LGTM or Certainly"     │ • M(v) = -∞ applied before softmax   │
-│ • Soft continuous probability shift  │ • Deterministic probability = 0.0    │
-│ • Tail probability still non-zero    │ • Mathematically impossible to sample│
-│ • Fails under high temperature       │ • Enforced by CFG grammar engine     │
-│ • Operates inside transformer        │ • Operates in inference engine (vLLM)│
-└──────────────────────────────────────┴──────────────────────────────────────┘
-```
+| In-Context Negative Prompts (Soft Attention) | External Runtime Logit Processor (Hard Masking) |
+| :--- | :--- |
+| • "Do not say LGTM or Certainly" | • $M(v) = -\infty$ applied before softmax |
+| • Soft continuous probability shift | • Deterministic probability = 0.0 |
+| • Tail probability still non-zero | • Mathematically impossible to sample |
+| • Fails under high temperature | • Enforced by CFG grammar engine |
+| • Operates inside transformer | • Operates in inference engine (vLLM) |
 
 1. **In-Context Soft Attention Guidance**:
    Directives in the prompt prefix (e.g., `FORBIDDEN_TOKENS: ["Clean", "LGTM", "Great"]`) guide the attention weights $\alpha_{l, k, i}^{(t)}$. They push the activations toward critical subspaces, decreasing the logits of prohibited tokens. However, because softmax is strictly positive for all real-valued logits:
@@ -1742,16 +1674,10 @@ This neutralizes the Value vectors of the sink tokens downstream, preventing the
 #### 5.3 Decoupling Numerical Sinks from Semantic Instruction Governance
 A catastrophic conceptual error in prompt engineering is conflating the **numerical attention sink** (positions $0..3$) with **semantic persona governance** (positions $4..k$).
 
-```text
-Sequence Prefix Memory Partitioning:
-[ Token 0 ] [ Token 1 ] [ Token 2 ] [ Token 3 ] | [ Token 4 ] [ Token 5 ] ... [ Token k ]
-├───────────────────────────────────────────────┤ ├─────────────────────────────────────────┤
-       NUMERICAL ATTENTION SINK WINDOW                   OPERATIONAL PERSONA SPECIFICATION
-   - Delimiters (<s>, <|im_start|>, system)          - Invariants, Negative Constraints, Schemas
-   - Semantically agnostic numerical dump           - Subject to standard context dilution
-   - Value vectors neutralized downstream           - Actively queried by Induction Heads
-   - Invariant ~50%-80% Softmax mass                - Requires Query-Key resonance to activate
-```
+| Memory Partition | Token Range | Architectural & Attention Invariants |
+| :--- | :---: | :--- |
+| **Numerical Attention Sink Window** | Tokens $0 \dots 3$<br>`[<s>, <\|im_start\|>, system, <\|end_header_id\|>]` | • Delimiters and structural boundaries<br>• Semantically agnostic numerical dump<br>• Value vectors neutralized downstream<br>• Invariant ~50%–80% Softmax mass |
+| **Operational Persona Specification** | Tokens $4 \dots k$ | • Invariants, Negative Constraints, Schemas<br>• Subject to standard context dilution<br>• Actively queried by Induction Heads<br>• Requires Query-Key resonance to activate |
 
 ##### Falsification of the "Semantic Governor" Hypothesis
 Certain naive literature posits that because tokens $0..3$ absorb $>50\%$ of attention mass, placing a persona prompt at the sequence start converts the sink into a "continuous behavioral governor" that injects persona constraints at every step.
@@ -2234,19 +2160,12 @@ $$z_f = \langle \mathbf{h}_l^{(t)}, \mathbf{d}_f \rangle = \left(\mathbf{h}_l^{(
 
 Because $d_{\text{model}}$ is large ($4096$ in 8B models, $8192$ in 70B models, $12288+$ in frontier models), the vector space can accommodate an exponential number of nearly orthogonal directions via the Johnson-Lindenstrauss lemma and the phenomenon of **superposition** (allocating more features than dimensions by tolerating bounded interference noise; Elhage et al., 2022).
 
-```text
-Residual Stream Bus (Dimension d_model = 4096 / 8192 / 12288):
-┌─────────────────────────────────────────────────────────────────────────────┐
-│ Subspace A: Syntactic Grammar & Positional Tracking (Low Layers: L1 - L8)   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Subspace B: Domain Fact Retrieval & Entity Linking (Mid Layers: L9 - L24)   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Subspace C: Persona Behavioral Vectors & Epistemic Stance (Mid-to-Late)     │
-│             (e.g., d_falsify, d_anti_sycophancy, d_formal_proof)            │
-├─────────────────────────────────────────────────────────────────────────────┤
-│ Subspace D: Next-Token Unembedding Logit Competition (Final Layers: L25 - L)│
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+| Subspace Identifier | Residual Stream Layer Range | Functional & Behavioral Representation |
+| :--- | :--- | :--- |
+| **Subspace A** | Low Layers (L1 – L8) | Syntactic Grammar & Positional Tracking |
+| **Subspace B** | Mid Layers (L9 – L24) | Domain Fact Retrieval & Entity Linking |
+| **Subspace C** | Mid-to-Late Layers | Persona Behavioral Vectors & Epistemic Stance (e.g., $\mathbf{d}_{\text{falsify}}$, $\mathbf{d}_{\text{anti\_sycophancy}}$, $\mathbf{d}_{\text{formal\_proof}}$) |
+| **Subspace D** | Final Layers (L25 – L) | Next-Token Unembedding Logit Competition |
 
 #### 3.2 Reading, Writing, and Layer-by-Layer Accumulation
 The residual stream operates as an open communication bus where layers communicate exclusively through additive updates. In standard Pre-RMSNorm transformer architectures, the exact layer-by-layer update recurrence is formulated as:
@@ -4676,33 +4595,13 @@ $$\text{Final Verdict} = \begin{cases}
 
 Before approving any autonomous agent, persona specification, or system prompt for enterprise production deployment, engineering leadership must audit the implementation against this 5-point readiness gate:
 
-```text
-+----------------------------------------------------------------------------------------------------+
-|                         THE 5-POINT ENTERPRISE INVARIANT READINESS SCORECARD                       |
-+---+---------------------------------------------------------------------------------+--------------+
-| # | AUDIT CRITERION                                                                 | PASS REQUIREMENT
-+---+---------------------------------------------------------------------------------+--------------+
-| 1 | Structural Envelope & Two-Plane Isolation                                      | MANDATORY    |
-|   | Are system prompts and untrusted input artifacts isolated using distinct        | XML tags     |
-|   | structural delimiters (<system_persona>, <untrusted_artifact>)?                | with hashes  |
-+---+---------------------------------------------------------------------------------+--------------+
-| 2 | Absence of Nominal Cosplay Titles                                               | MANDATORY    |
-|   | Has all ungrounded roleplay fluff ("You are a world-class expert...") been      | ZERO nominal |
-|   | purged and replaced with explicit domain boundary scopes (tuple I)?             | fluff tokens |
-+---+---------------------------------------------------------------------------------+--------------+
-| 3 | Epistemic Inversion & Negative Invariants Defined                               | MANDATORY    |
-|   | Does the prompt establish an adversarial prior (E_adv) and define explicit      | >= 3 negative|
-|   | negative constraints detailing what the agent MUST REJECT?                      | constraints  |
-+---+---------------------------------------------------------------------------------+--------------+
-| 4 | External Grammar Enforcement for Typed Outputs                                  | MANDATORY    |
-|   | Is output schema adherence enforced via external CFG logit masking processors  | External CFG |
-|   | rather than relying solely on in-context soft attention compliance?             | logit clamp  |
-+---+---------------------------------------------------------------------------------+--------------+
-| 5 | Severity-Over-Majority Veto Protocol Active                                     | MANDATORY    |
-|   | Does the multi-agent consensus engine permit a single Sev-1 defect to halt      | Sev-1 veto   |
-|   | the deployment pipeline regardless of majority consensus?                       | override on  |
-+---+---------------------------------------------------------------------------------+--------------+
-```
+| Point | Invariant Readiness Gate | Audit Criterion | Pass Requirement |
+| :---: | :--- | :--- | :---: |
+| **1** | **Structural Envelope & Two-Plane Isolation** | Are system prompts and untrusted input artifacts isolated using distinct structural delimiters (`<system_persona>`, `<untrusted_artifact>`)? | **MANDATORY**<br>(XML tags with hashes) |
+| **2** | **Absence of Nominal Cosplay Titles** | Has all ungrounded roleplay fluff ("You are a world-class expert...") been purged and replaced with explicit domain boundary scopes (tuple $\mathcal{I}$)? | **MANDATORY**<br>(ZERO nominal fluff tokens) |
+| **3** | **Epistemic Inversion & Negative Invariants Defined** | Does the prompt establish an adversarial prior ($\mathcal{E}_{\text{adv}}$) and define explicit negative constraints detailing what the agent MUST REJECT? | **MANDATORY**<br>($\ge 3$ negative constraints) |
+| **4** | **External Grammar Enforcement for Typed Outputs** | Is output schema adherence enforced via external CFG logit masking processors rather than relying solely on in-context soft attention compliance? | **MANDATORY**<br>(External CFG logit clamp) |
+| **5** | **Severity-Over-Majority Veto Protocol Active** | Does the multi-agent consensus engine permit a single Sev-1 defect to halt the deployment pipeline regardless of majority consensus? | **MANDATORY**<br>(Sev-1 veto override active) |
 
 ---
 

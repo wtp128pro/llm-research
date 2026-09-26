@@ -66,22 +66,18 @@ This research provides the first end-to-end mechanistic, mathematical, and archi
 
 ## Core Theoretical Frameworks
 
-```text
-+----------------------------------------------------------------------------------------------------+
-|                               THE PARADIGM CUTOVER: COSPLAY VS. ENGINEERING                        |
-+----------------------------------------------------------------------------------------------------+
-| DIMENSION             | NOMINAL "COSPLAY" PROMPTING              | OPERATIONAL 7-TUPLE CONTRACTS    |
-+-----------------------+------------------------------------------+----------------------------------+
-| Conceptual Model      | Theatrical roleplay ("Act like an expert")| Dynamical boundary constraints   |
-| Latent Representation | Diffuse, high-entropy semantic centroid  | Dense, low-entropy attractor basin|
-| Attention Circuits    | High-frequency boilerplate matching      | Active Q-K invariant auditing    |
-| Memory Retrieval (MLP)| High-frequency web cliches & flattery    | Specialized domain sub-networks  |
-| Epistemic Stance      | Sycophantic Affirmative Prior (E_aff)    | Adversarial Falsification (E_adv)|
-| Handling Input Gaps   | The Plausibility Trap (silent invention) | Blocking Sev-1 Veto Gate         |
-| Failure Adjudication  | Unweighted democratic majority voting    | Severity-Over-Majority rule     |
-| System Integration    | Flat string concatenation (in-band)      | Two-plane structural envelopes   |
-+----------------------------------------------------------------------------------------------------+
-```
+### The Paradigm Cutover: Cosplay vs. Engineering
+
+| Dimension | Nominal "Cosplay" Prompting | Operational 7-Tuple Contracts |
+| :--- | :--- | :--- |
+| **Conceptual Model** | Theatrical roleplay ("Act like an expert") | Dynamical boundary constraints |
+| **Latent Representation** | Diffuse, high-entropy semantic centroid | Dense, low-entropy attractor basin |
+| **Attention Circuits** | High-frequency boilerplate matching | Active Q-K invariant auditing |
+| **Memory Retrieval (MLP)** | High-frequency web cliches & flattery | Specialized domain sub-networks |
+| **Epistemic Stance** | Sycophantic Affirmative Prior ($\mathcal{E}_{\text{aff}}$) | Adversarial Falsification ($\mathcal{E}_{\text{adv}}$) |
+| **Handling Input Gaps** | The Plausibility Trap (silent invention) | Blocking Sev-1 Veto Gate |
+| **Failure Adjudication** | Unweighted democratic majority voting | Severity-Over-Majority rule |
+| **System Integration** | Flat string concatenation (in-band) | Two-plane structural envelopes |
 
 ### 1. The Operational Persona 7-Tuple Model
 $$\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle$$
