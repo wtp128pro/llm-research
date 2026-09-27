@@ -29,8 +29,9 @@ llm-research/
 │   └── 06-enterprise-verification-architectures/ # 4-Tier verification, AST/SMT & veto protocols
 └── specs/
     ├── 7-tuple-persona-spec.md                  # Mathematical definition of P = <I,E,K,H,T,R,S>
-    └── readiness-scorecard.md                   # 5-Point Enterprise Invariant Readiness Scorecard
-```
+    ├── readiness-scorecard.md                   # 5-Point Enterprise Invariant Readiness Scorecard
+    ├── skill-bootstrap-spec.md                  # Universal Bootstrap Specification for Autonomous Agent Skills
+    └── skill-bootstrap.txt                      # Raw generic skill bootstrap prompt for zero-scratch synthesis
 
 ---
 
@@ -60,7 +61,7 @@ This research provides the first end-to-end mechanistic, mathematical, and archi
 | **03** | **[Transformer Inference Dynamics](research/03-transformer-mechanistics/)** | Explores residual stream communication, $QK/OV$ induction circuits, associative MLP memories, Top-$k$ Sparse Autoencoders (SAEs), and CoT $\text{TC}^0 \to \text{P}$ circuit complexity. | Paper §Layer 3 |
 | **04** | **[Nominal Persona Pathology](research/04-nominal-persona-pathology/)** | Deconstructs polysemantic dispersion, Bradley-Terry RLHF sycophancy dominance, and why true expertise is defined by what an agent *forbids*. | Paper §Layer 4 |
 | **05** | **[Input Gaps & Autoregressive Smoothing](research/05-input-gap-falsification/)** | Explains the Plausibility Trap—how cross-entropy loss forces models to hallucinate defaults for unstated parameters—and formalizes active falsification lenses. | Paper §Layer 5 |
-| **06** | **[Enterprise Verification Architectures](research/06-enterprise-verification-architectures/)** | Implements the 4-Tier verification blueprint: out-of-band AST/SMT gateway, maker-checker orthogonality, constrained CFG runtime decoders, and Severity-Over-Majority consensus. | [`specs/readiness-scorecard.md`](specs/readiness-scorecard.md)<br>Paper §Part III |
+| **06** | **[Enterprise Verification Architectures](research/06-enterprise-verification-architectures/)** | Implements the 4-Tier verification blueprint: out-of-band AST/SMT gateway, maker-checker orthogonality, constrained CFG runtime decoders, and Severity-Over-Majority consensus. | [`specs/readiness-scorecard.md`](specs/readiness-scorecard.md)<br>[`specs/skill-bootstrap-spec.md`](specs/skill-bootstrap-spec.md)<br>Paper §Part III |
 
 ---
 
@@ -114,6 +115,15 @@ In-context prompt constraints induce *finite logit attenuation* ($\Delta z_v \ll
 
 Detailed implementation criteria: [`specs/readiness-scorecard.md`](specs/readiness-scorecard.md)
 
+
+## Autonomous Agent Skill Bootstrap Specification
+
+To operationalize the research on personas, input gap falsification, and adversarial verification architectures, this repository publishes the **Universal Skill Bootstrap Specification** ([`specs/skill-bootstrap-spec.md`](specs/skill-bootstrap-spec.md)):
+
+* **Universal Bootstrap Prompt**: [`specs/skill-bootstrap.txt`](specs/skill-bootstrap.txt) | [`specs/skill-bootstrap-spec.md#2-universal-skill-bootstrap-prompt-bootstrap_prompt`](specs/skill-bootstrap-spec.md#2-universal-skill-bootstrap-prompt-bootstrap_prompt)
+* **Full Architectural Specification**: [`specs/skill-bootstrap-spec.md`](specs/skill-bootstrap-spec.md)
+
+This specification allows any new user or autonomous agent orchestration engine to construct a production-ready, enterprise-grade agent skill from scratch. It translates all 25 non-negotiable operational methodologies—exhaustive cartography, atomic work unit decomposition, Directed Acyclic Graph (DAG) formulation under Bernstein concurrency conditions, strict Maker $\neq$ Checker orthogonality, 3-agent adversarial verification panels, severity-over-majority vetoes, bounded self-learning loops ($N \le 3$), and zero-assumption input gap audits—into a complete, turnkey engineering blueprint.
 ---
 
 ## Citation

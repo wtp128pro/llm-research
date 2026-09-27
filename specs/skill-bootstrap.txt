@@ -1,0 +1,29 @@
+I need you to create a skill
+Name the skill <skill-name>
+The skill MUST have the following aspects:
+
+- Skill MUST perform thorough cartography first
+- Skill MUST perform decomposition and divide work into atomic work units 
+- Skill MUST make sure that work units dependency graph is generated
+- Skill MUST make sure skill utilizes maker != checker pattern
+- Skill MUST make sure skill utilizes bounded verification and self-learning loops
+- Skill MUST make sure skill has 3-agent adversarial verification panel for each maker
+- Skill MUST make sure there's a written on disk formalized briefing and debriefing document for each work unit
+- Skill MUST make sure to avoid any gaps in the input
+- Skill MUST make sure that skill uses reputable sources for any data and/or input validation and input gap analysis
+- Skill MUST make sure that skill DOES NOT fill in the blanks with assumptions
+- Skill MUST make sure that skill DOES NOT hallucinate, goldplate, or drift
+- Skill MUST make sure skill uses a series of Socratic dialogs for any human interactions
+- Skill MUST make sure skill ONLY presents human interactions when critical, and uses plain human language with all terms explained inline
+- Skill MUST make sure skill performs a detailed internal analysis before presenting choice of or making a decision
+- Skill MUST make sure that the optimum decision is presented first and marked as recommended
+- Skill MUST make sure skill uses plain human language and explain all terms inline for any output that is intended for human consumption
+- Skill MUST make sure skill uses formal language and be as concise as you can when the input/output is intended for LLM/agent/subagent consumption
+- Skill MUST make sure that all work units are executed in subagents with their independent context budget
+- Skill MUST make sure that skill allows for Bounded Graph Addition
+- Skill MUST make sure that in case of a major problem found by the verification panel, the majority of the problem takes precedence over majority of votes
+- Skill MUST make sure that skill uses .omp_wip/<date>_<time_with_seconds>_<task moniker> working directory for all intermediate files
+- Skill MUST make sure that when skill is writing code, you provide extensive documentation, with all parameters, pre- and post- conditions explained fully
+- Skill MUST make sure that when skill is writing code, you use human language that implies knowledge and understanding of programming terms, and explain all terms inline
+- Skill MUST make sure that skill identifies, defines, and chooses the best roles and personas for each task and DOES NOT use the same persona/role for maker/checker
+- Skill MUST make sure that when skill is writing code, skill performs a final adversarial analysis by a panel of 3, where it makes sure that no inadvertant negative side effects take place as the result of a code change
