@@ -32,6 +32,7 @@ llm-research/
     ├── readiness-scorecard.md                   # 5-Point Enterprise Invariant Readiness Scorecard
     ├── skill-bootstrap-spec.md                  # Universal Bootstrap Specification for Autonomous Agent Skills
     └── skill-bootstrap.txt                      # Raw generic skill bootstrap prompt for zero-scratch synthesis
+```
 
 ---
 
@@ -81,7 +82,11 @@ This research provides the first end-to-end mechanistic, mathematical, and archi
 | **System Integration** | Flat string concatenation (in-band) | Two-plane structural envelopes |
 
 ### 1. The Operational Persona 7-Tuple Model
-$$\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle$$
+
+$$
+\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mathcal{T}, \mathcal{R}, \mathcal{S} \rangle
+$$
+
 * $\mathcal{I}$: Identity & Explicit Scope Boundaries (Anti-Scope)
 * $\mathcal{E}$: Epistemic Stance ($\mathcal{E}_{\text{adv}}$ vs $\mathcal{E}_{\text{aff}}$)
 * $\mathcal{K}$: Invariants Checklist ($\mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}$)
@@ -91,7 +96,11 @@ $$\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mat
 * $\mathcal{S}$: Monotonic Severity Scoring ($\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}$)
 
 ### 2. The Logit Masking Realization Law
-$$\Delta z_{t, v} = \mathbf{w}_U(v)^T \Delta \mathbf{h}_t^{(L)}$$
+
+$$
+\Delta z_{t, v} = \mathbf{w}_U(v)^T \Delta \mathbf{h}_t^{(L)}
+$$
+
 In-context prompt constraints induce *finite logit attenuation* ($\Delta z_v \ll 0$), driving $P(v) \to 0$ without guaranteeing impossibility. Hard negative constraints ($z_v = -\infty$) strictly require out-of-band runtime logit decoders (Context-Free Grammar / CFG masks).
 
 ### 3. Decoupled 4-Tier Verification Blueprint
