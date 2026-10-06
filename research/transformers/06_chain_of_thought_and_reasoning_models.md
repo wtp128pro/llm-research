@@ -377,7 +377,7 @@ $$
 Where $q \sim P(Q)$, $`\{o_i\}_{i=1}^G \sim \pi_{\theta_{\text{old}}}(O \mid q)`$, and the importance probability ratio $r_{i,t}(\theta)$ is defined as:
 
 $$
-r_{i,t}(\theta) = \frac{\pi_\theta(o_{i,t} \mid q, o_{i,<t})}{\pi_{\theta_{\text{old}}}(o_{i,t} \mid q, o_{i,<t})}
+r_{i,t}(\theta) = \frac{\pi_\theta(o_{i,t} \mid q, o_{i, 1:t-1})}{\pi_{\theta_{\text{old}}}(o_{i,t} \mid q, o_{i, 1:t-1})}
 $$
 
 ##### Detailed Symbol Breakdown: Objective Equation
@@ -390,7 +390,7 @@ $$
 - $|o_i|$: The total token length of rollout $o_i$. Dividing by $|o_i|$ normalizes token contributions across short and long trajectories.
 - $t$: The token index position within the sequence ($1 \le t \le |o_i|$).
 - $o_{i,t}$: The specific token emitted at step $t$.
-- $o_{i,<t}$: The sequence of preceding tokens generated prior to step $t$.
+- $`o_{i, 1:t-1}`$: The sequence of preceding tokens generated prior to step $t$.
 - $r_{i,t}(\theta)$: The importance sampling ratio comparing the probability of emitting token $o_{i,t}$ under the updated policy $\pi_\theta$ versus the old policy $`\pi_{\theta_{\text{old}}}`$.
 - $`\text{clip}(r, 1-\epsilon_{\text{clip}}, 1+\epsilon_{\text{clip}})`$: The PPO clipping function that bounds the ratio within $`[1-\epsilon_{\text{clip}}, 1+\epsilon_{\text{clip}}]`$ (typically $\epsilon_{\text{clip}} = 0.20$), preventing destructively large gradient steps.
 - $\hat{A}_i$: The group-normalized advantage scalar from Step 2.
@@ -398,7 +398,7 @@ $$
 - $`D_{\text{KL}, t}(\pi_\theta \parallel \pi_{\text{ref}})`$: The per-token unbiased Kullback-Leibler divergence estimator between the policy $\pi_\theta$ and the frozen base reference model $\pi_{\text{ref}}$:
 
 $$
-D_{\text{KL}, t}(\pi_\theta \parallel \pi_{\text{ref}}) = \frac{\pi_{\text{ref}}(o_{i,t} \mid q, o_{i,<t})}{\pi_\theta(o_{i,t} \mid q, o_{i,<t})} - \log \frac{\pi_{\text{ref}}(o_{i,t} \mid q, o_{i,<t})}{\pi_\theta(o_{i,t} \mid q, o_{i,<t})} - 1
+D_{\text{KL}, t}(\pi_\theta \parallel \pi_{\text{ref}}) = \frac{\pi_{\text{ref}}(o_{i,t} \mid q, o_{i, 1:t-1})}{\pi_\theta(o_{i,t} \mid q, o_{i, 1:t-1})} - \log \frac{\pi_{\text{ref}}(o_{i,t} \mid q, o_{i, 1:t-1})}{\pi_\theta(o_{i,t} \mid q, o_{i, 1:t-1})} - 1
 $$
 
 Because $D_{\text{KL}, t}$ is computed per token inside the sequence length average $\frac{1}{|o_i|} \sum_{t=1}^{|o_i|}$, the regularization penalty scales gracefully per token without penalizing longer reasoning trajectories.

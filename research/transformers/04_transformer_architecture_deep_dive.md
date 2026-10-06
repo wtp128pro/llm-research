@@ -506,23 +506,23 @@ While the KV cache saves massive compute, it introduces a severe **memory capaci
 
 The physical memory required to store the KV cache across all layers in 16-bit precision (`bfloat16` or `float16`, 2 bytes per element) is:
 
-$$\text{Memory}_{\text{KV}} = 2 \times 2 \times n_{\text{layers}} \times n_{\text{kv\_heads}} \times d_{\text{head}} \times L \times B \quad \text{bytes}$$
+$$\text{Memory}_{\text{KV}} = 2 \times 2 \times n_{\text{layers}} \times n_{\text{KV}} \times d_{\text{head}} \times L \times B \quad \text{bytes}$$
 
 Where:
 - The first $2$: Accounts for the two separate cached tensors (Keys and Values).
 - The second $2$: Accounts for the 2 bytes required per element in 16-bit precision (`bfloat16` or `float16`).
 - $n_{\text{layers}}$: The number of Transformer layers in the model (e.g., 32 in 8B, 80 in 70B).
-- $`n_{\text{kv\_heads}}`$: The number of Key-Value heads per layer.
+- $`n_{\text{KV}}`$: The number of Key-Value heads per layer.
 - $d_{\text{head}}$: The head dimension ($128$).
 - $L$: The sequence context length (e.g., 32,768 or 131,072 tokens).
 - $B$: The batch size (number of concurrent user requests).
 
 Combining the leading constants:
 
-$$\text{Memory}_{\text{KV}} = 4 \cdot n_{\text{layers}} \cdot n_{\text{kv\_heads}} \cdot d_{\text{head}} \cdot L \cdot B \quad \text{bytes}$$
+$$\text{Memory}_{\text{KV}} = 4 \cdot n_{\text{layers}} \cdot n_{\text{KV}} \cdot d_{\text{head}} \cdot L \cdot B \quad \text{bytes}$$
 
 #### Concrete Example: The Multi-Head Attention (MHA) Crisis
-Consider a 70B parameter model with standard Multi-Head Attention ($`n_{\text{kv\_heads}} = n_{\text{query\_heads}} = 64`$), $n_{\text{layers}} = 80$, $d_{\text{head}} = 128$, processing a 32,000-token context for a single user ($B = 1$):
+Consider a 70B parameter model with standard Multi-Head Attention ($`n_{\text{KV}} = n_{\text{Q}} = 64`$), $n_{\text{layers}} = 80$, $d_{\text{head}} = 128$, processing a 32,000-token context for a single user ($B = 1$):
 
 $$\text{Memory}_{\text{KV}} = 4 \times 80 \times 64 \times 128 \times 32,000 \times 1 = 83,886,080,000 \text{ bytes} \approx 78.1 \text{ GiB}$$
 
@@ -548,17 +548,16 @@ flowchart TD
 
 In GQA, Query heads are divided into groups of size $\text{Ratio}_{\text{GQA}}$:
 
-$$\text{Ratio}_{\text{GQA}} = \frac{n_{\text{query\_heads}}}{n_{\text{kv\_heads}}}$$
+$$\text{Ratio}_{\text{GQA}} = \frac{n_{\text{Q}}}{n_{\text{KV}}}$$
 
 The reduction in KV cache memory and memory bandwidth consumption is:
 
-$$\text{Memory Reduction Factor} = 1 - \frac{n_{\text{kv\_heads}}}{n_{\text{query\_heads}}} = 1 - \frac{1}{\text{Ratio}_{\text{GQA}}}$$
+$$\text{Reduction Factor} = 1 - \frac{n_{\text{KV}}}{n_{\text{Q}}} = 1 - \frac{1}{\text{Ratio}_{\text{GQA}}}$$
 
 #### Real-World Case Study: LLaMA-3-70B
 In LLaMA-3-70B:
-- $`n_{\text{query\_heads}} = 64`$
-- $`n_{\text{kv\_heads}} = 8`$
-
+- $`n_{\text{Q}} = 64`$ (Query heads)
+- $`n_{\text{KV}} = 8`$ (Key-Value heads)
 The GQA sharing ratio is:
 
 $$\text{Ratio}_{\text{GQA}} = \frac{64}{8} = 8$$
