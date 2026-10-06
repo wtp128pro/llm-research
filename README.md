@@ -26,7 +26,8 @@ llm-research/
 │   ├── 03-transformer-mechanistics/             # Residual bus, MLPs, SAEs & CoT scratchpads
 │   ├── 04-nominal-persona-pathology/            # Polysemantic dispersion & RLHF sycophancy
 │   ├── 05-input-gap-falsification/              # Plausibility traps & autoregressive smoothing
-│   └── 06-enterprise-verification-architectures/ # 4-Tier verification, AST/SMT & veto protocols
+│   ├── 06-enterprise-verification-architectures/ # 4-Tier verification, AST/SMT & veto protocols
+│   └── transformers/                            # 7-chapter research series: foundations to frontier reasoning
 └── specs/
     ├── 7-tuple-persona-spec.md                  # Mathematical definition of P = <I,E,K,H,T,R,S>
     ├── readiness-scorecard.md                   # 5-Point Enterprise Invariant Readiness Scorecard
@@ -63,7 +64,7 @@ This research provides the first end-to-end mechanistic, mathematical, and archi
 | **04** | **[Nominal Persona Pathology](research/04-nominal-persona-pathology/)** | Deconstructs polysemantic dispersion, Bradley-Terry RLHF sycophancy dominance, and why true expertise is defined by what an agent *forbids*. | Paper §Layer 4 |
 | **05** | **[Input Gaps & Autoregressive Smoothing](research/05-input-gap-falsification/)** | Explains the Plausibility Trap—how cross-entropy loss forces models to hallucinate defaults for unstated parameters—and formalizes active falsification lenses. | Paper §Layer 5 |
 | **06** | **[Enterprise Verification Architectures](research/06-enterprise-verification-architectures/)** | Implements the 4-Tier verification blueprint: out-of-band AST/SMT gateway, maker-checker orthogonality, constrained CFG runtime decoders, and Severity-Over-Majority consensus. | [`specs/readiness-scorecard.md`](specs/readiness-scorecard.md)<br>[`specs/skill-bootstrap-spec.md`](specs/skill-bootstrap-spec.md)<br>Paper §Part III |
-
+| **07** | **[Modern LLMs: Foundations to Frontier Reasoning](research/transformers/README.md)** | Publication-grade 7-chapter series deconstructing neural foundations, biological wetware vs. silicon, high-dimensional tensor geometry, Transformer layers, attention dynamics, System 2 deliberative reasoning, and frontier architectures (DeepSeek-V3 MoE, MLA). | [`research/transformers/README.md`](research/transformers/README.md)<br>Chapters 01–07 |
 ---
 
 ## Core Theoretical Frameworks
