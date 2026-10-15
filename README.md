@@ -94,7 +94,7 @@ $$
 * **$\mathcal{H}$ (Heuristics)**: Adversarial Attack Heuristics & Stress Vectors
 * **$\mathcal{T}$ (Tools)**: Permitted Out-of-Band Tool Matrix
 * **$\mathcal{R}$ (Output Schema)**: Structured Output Schema with Mandatory Proof Counterexamples
-* **$\mathcal{S}$ (Severity)**: Monotonic Severity Scoring ($`\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}`$)
+* **$`\mathcal{S}`$ (Severity)**: Monotonic Severity Scoring ($`\text{Sev-1} > \text{Sev-2} > \text{Sev-3}`$)
 
 ### 2. The Logit Masking Realization Law
 
@@ -109,7 +109,7 @@ In-context prompt constraints induce *finite logit attenuation* ($`\Delta z_v \l
 2. **Tier 1 (Deterministic Gateway)**: Compilers, AST analyzers, and SMT solvers verifying static invariants out-of-band.
 3. **Tier 2 (Multi-Agent Neural Panel)**: Orthogonal maker-checker auditing with independent KV-caches and adversarial stances.
 4. **Tier 3 (Runtime Invariant Gates)**: External CFG constrained decoding ($`M(v) \in \{0, -\infty\}`$) and mandatory counterexample generation.
-5. **Tier 4 (Enterprise Adjudication Gate)**: Severity-Over-Majority consensus protocol overriding democratic majority votes on Sev-1 defects.
+5. **Tier 4 (Enterprise Adjudication Gate)**: Severity-Over-Majority consensus protocol overriding democratic majority votes on any Sev-1 (Critical) or Sev-2 (Major) defect.
 
 ---
 
@@ -121,7 +121,7 @@ In-context prompt constraints induce *finite logit attenuation* ($`\Delta z_v \l
 | **2** | **Maker vs. Checker Orthogonality** | Decoupled KV-caches & stances | Independent multi-agent harness |
 | **3** | **Active Input Gap Detection** | Halts on missing parameters | `HALTED_INPUT_GAP` schema response |
 | **4** | **Runtime CFG Logit Clamping** | External grammar enforcement | $`z_v = -\infty`$ logit processors |
-| **5** | **Severity-Over-Majority Veto** | Sev-1 defect halts pipeline | Single-veto consensus engine |
+| **5** | **Severity-Over-Majority Veto** | Sev-1 or Sev-2 defect halts pipeline | Single-veto consensus engine |
 
 Detailed implementation criteria: [`specs/readiness-scorecard.md`](specs/readiness-scorecard.md)
 
@@ -133,7 +133,17 @@ To operationalize the research on personas, input gap falsification, and adversa
 * **Universal Bootstrap Prompt**: [`specs/skill-bootstrap.txt`](specs/skill-bootstrap.txt) | [`specs/skill-bootstrap-spec.md#2-universal-skill-bootstrap-prompt-bootstrap_prompt`](specs/skill-bootstrap-spec.md#2-universal-skill-bootstrap-prompt-bootstrap_prompt)
 * **Full Architectural Specification**: [`specs/skill-bootstrap-spec.md`](specs/skill-bootstrap-spec.md)
 
-This specification allows any new user or autonomous agent orchestration engine to construct a production-ready, enterprise-grade agent skill from scratch. It translates all 25 non-negotiable operational methodologies—exhaustive cartography, atomic work unit decomposition, Directed Acyclic Graph (DAG) formulation under Bernstein concurrency conditions, strict Maker $\neq$ Checker orthogonality, 3-agent adversarial verification panels, severity-over-majority vetoes, bounded self-learning loops ($N \le 3$), and zero-assumption input gap audits—into a complete, turnkey engineering blueprint.
+This specification allows any new user or autonomous agent orchestration engine to construct a production-ready, enterprise-grade agent skill from scratch. It translates all 29 non-negotiable operational methodologies—exhaustive cartography, atomic work unit decomposition, Directed Acyclic Graph (DAG) formulation under Bernstein concurrency conditions, strict Maker $\neq$ Checker orthogonality, 3-agent adversarial verification panels, severity-over-majority vetoes, bounded self-learning loops ($N \le 3$), and zero-assumption input gap audits—into a complete, turnkey engineering blueprint.
+
+The 29 requirements also set how the skill works with people and how it plans its checks:
+
+* **Three autonomy modes** (how often the skill stops to ask a person): *ask every time*, *only critical issues*, and *fully autonomous*. The skill takes the mode from the request if the request states one; otherwise choosing the mode is the skill's first question, with no option pre-selected or marked as recommended. In *ask every time* mode, every open question goes to a person. In *only critical issues* mode, the skill interrupts a person only for the critical events that the autonomy-mode requirement lists. In *fully autonomous* mode, no question ever goes to a person: each would-be question is settled by a decision that an independent second-opinion agent reviews and that is logged on disk, a gap that evidence cannot close is closed only by such a logged decision that cites the sources searched, and an irreversible action (one that cannot be undone, such as deleting data or publishing) is not carried out but listed in the final report.
+* **Input clarification before cartography** (cartography = mapping the existing files, facts, and dependencies before any other work): the skill first rewrites the request into a precise brief—the goal, the done criteria (how to tell the work is finished), what is out of scope, and the constraints—and has it confirmed one question at a time (in *fully autonomous* mode, by logged, reviewed decisions). It repeats this for every new input a person gives during the run.
+* **One question per Socratic dialogue** (a short question-and-answer exchange that tests the reasoning behind a choice): every question to a person is asked in its own dialogue, with exactly one question and the recommended option listed first (except the autonomy-mode question, which marks no option as recommended). Every dialogue is logged in `dialogues.jsonl`, and the script `scripts/validate_dialogues.py` checks that log.
+* **Proportional formal methods** (checks with a precise, mathematical meaning, matched to the kind of work): at planning time each work unit gets the methods its work calls for—pre/post-condition contracts (what must be true before and after a step), property-based tests (tests that run many generated inputs against a stated rule), SMT solving (an automatic logic solver that proves or refutes a set of constraints), model checking (exploring every reachable state of a design), and graph checks that the dependency graph has no cycles and that units run in parallel only when neither writes what the other reads or writes (Bernstein concurrency conditions). Every method the work matches must run; skipping one needs a written reason that the verification panel checks.
+* **7-tuple personas stored as JSON files**: every persona (a defined role that an agent plays) is a full seven-part description as defined in [`specs/7-tuple-persona-spec.md`](specs/7-tuple-persona-spec.md)—identity and scope, epistemic stance, invariants, attack heuristics, tools, output schema, and severity scale—stored as one JSON file per persona under `resources/personas/` and validated against the schema `resources/templates/persona.schema.json` before it is used.
+* **Working directory**: all intermediate files go in a per-run folder, `.skill_work_in_progress/<date>_<time_with_seconds>_<task-moniker>/`, which this repository's `.gitignore` excludes from version control.
+
 ---
 
 ## Citation
