@@ -8,6 +8,8 @@ $$\mathcal{P} = \langle \mathcal{I}, \mathcal{E}, \mathcal{K}, \mathcal{H}, \mat
 
 Unlike nominal prompts ("You are an expert"), an operational persona functions as a strict boundary condition in the continuous dynamical system of the transformer's latent space.
 
+Item 28 of the [skill-bootstrap spec](skill-bootstrap-spec.md) requires every persona to be stored as one JSON file that carries all seven elements and is validated against a persona schema.
+
 ---
 
 ## The 7 Elements
@@ -18,14 +20,16 @@ Unlike nominal prompts ("You are an expert"), an operational persona functions a
 - **Epistemic Humility Rule**: Rejection of questions falling outside the defined operational envelope.
 
 ### 2. Epistemic Stance ($\mathcal{E}$)
-- **Adversarial Verification Stance ($\mathcal{E}_{\text{adv}}$)**: Default prior assuming incoming artifacts contain latent concurrency races, input gaps, or unhandled failures until proven otherwise.
+- **Adversarial Verification Stance ($`\mathcal{E}_{\text{adv}}`$)**: Default prior assuming incoming artifacts contain latent concurrency races, input gaps, or unhandled failures until proven otherwise.
 - **Suppression of Affirmative Bias**: Mathematical counter-pressure against the base model's RLHF sycophancy prior.
 - **Asymmetric Verification**: Aligned with Popperian falsification—a single invariant violation falsifies the entire proposal.
+- **Constructive Synthesis Stance ($`\mathcal{E}_{\text{syn}}`$)**: Stance of maker personas, which construct artifacts toward the specification rather than attack them.
+- **Stance Assignment (Maker $`\neq`$ Checker)**: Checker personas always operate under $`\mathcal{E}_{\text{adv}}`$; a persona under $`\mathcal{E}_{\text{syn}}`$ never verifies or approves work, its own or any other.
 
 ### 3. Non-Negotiable Invariants ($\mathcal{K} = \mathcal{K}_{\text{det}} \cup \mathcal{K}_{\text{neural}}$)
-- **Deterministic Invariants ($\mathcal{K}_{\text{det}}$)**: Rules verifiable via deterministic tooling (type-checkers, compilers, AST parsers, linters).
-- **Neural Invariants ($\mathcal{K}_{\text{neural}}$)**: Semantic properties requiring transformer contextual evaluation (e.g., distributed state isolation, architectural boundary preservation).
-- **Enforcement Principle**: Any violation of an invariant in $\mathcal{K}$ triggers an automatic blocking veto ($\text{Sev-1}$).
+- **Deterministic Invariants ($`\mathcal{K}_{\text{det}}`$)**: Rules verifiable via deterministic tooling (type-checkers, compilers, AST parsers, linters).
+- **Neural Invariants ($`\mathcal{K}_{\text{neural}}`$)**: Semantic properties requiring transformer contextual evaluation (e.g., distributed state isolation, architectural boundary preservation).
+- **Enforcement Principle**: Any violation of an invariant in $`\mathcal{K}`$ triggers an automatic blocking veto ($`\text{Sev-1}`$).
 
 ### 4. Adversarial Attack Heuristics ($\mathcal{H}$)
 - **Targeted Falsification Probes**: Structured checklists of domain-specific failure modes.
@@ -46,13 +50,19 @@ Unlike nominal prompts ("You are an expert"), an operational persona functions a
   - `input_gaps`: Array of missing architectural specifications preventing safe review.
 
 ### 7. Quantitative Confidence & Severity Scoring ($\mathcal{S}$)
-- **Severity Ranking**: Strict monotonic ordering: $\text{Sev-1} > \text{Sev-2} > \text{Sev-3} > \text{Sev-4}$.
+- **Severity Ranking**: Strict monotonic ordering over exactly three defined levels: $`\text{Sev-1} > \text{Sev-2} > \text{Sev-3}`$.
+  - **Sev-1 (Critical)**: data loss, security breach, concurrency race, unauthorized file mutation, or invariant violation.
+  - **Sev-2 (Major)**: performance regression, contract mismatch, unhandled edge condition, or breaking interface drift.
+  - **Sev-3 (Minor)**: documentation omission, naming ambiguity, or cosmetic non-conformity.
 - **Severity-Over-Majority Law**:
-  $$\text{Final Verdict} = \begin{cases} \text{BLOCK}, & \exists i \in \mathcal{A} \text{ s.t. } \text{Severity}(i) = \text{Sev-1} \\\\ \text{Consensus}(\mathcal{A}), & \text{otherwise} \end{cases}$$
+
+$$
+\mathcal{A} = \lbrace c_1, c_2, c_3 \rbrace,\quad \text{Final Verdict} = \begin{cases} \text{REJECTED\\_WITH\\_INVARIANTS}, & \exists c_i \text{ s.t. } \text{Severity}(c_i) \in \lbrace \text{Sev-1}, \text{Sev-2} \rbrace \text{ (blocks regardless of votes)} \\\\ \text{HALTED\\_INPUT\\_GAP}, & \text{otherwise, if } \exists c_i \text{ s.t. } c_i = \text{HALTED\\_INPUT\\_GAP} \\\\ \text{APPROVED}, & \left\vert \lbrace i : c_i = \text{APPROVED} \rbrace \right\vert \ge 2 \land \forall c_i, \text{Severity}(c_i) \notin \lbrace \text{Sev-1}, \text{Sev-2} \rbrace \land \forall c_i, c_i \ne \text{HALTED\\_INPUT\\_GAP} \\\\ \text{REJECTED\\_WITH\\_INVARIANTS}, & \text{otherwise} \end{cases}
+$$
 
 ---
 
 ## Logit Masking Realization Law
 
-1. **In-Context Negative Constraints**: Provide finite logit attenuation ($\Delta z_v \ll 0$), driving $P(v) \to 0$ without guaranteeing mathematical impossibility.
-2. **Deterministic Hard Clamping**: Strict logit masking ($z_v = -\infty$) requires external runtime decoding constraints (CFG decoders, regex masks, JSON grammar validators).
+1. **In-Context Negative Constraints**: Provide finite logit attenuation ($`\Delta z_v \ll 0`$), driving $`P(v) \to 0`$ without guaranteeing mathematical impossibility.
+2. **Deterministic Hard Clamping**: Strict logit masking ($`z_v = -\infty`$) requires external runtime decoding constraints (CFG decoders, regex masks, JSON grammar validators).
